@@ -1,0 +1,172 @@
+:root{
+    /* --blue:rgba(62, 198, 252); */
+    --blue:rgb(25, 114, 150);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+section{
+    width: 100%;
+    height: 100vh;
+}
+
+#page-header{
+    width: 100%;
+    height: 60vh;
+    /* background-size: cover; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+    top: 12%;
+    /* padding: 1px; */
+}
+#page-header h2,
+#page-header p{
+    color: #fff;
+}
+
+#blog{
+    padding: 0px 150px 0 150px;
+}
+#blog .blog-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding-bottom: 90px;
+}
+#blog .blog-img{
+    width: 50%;
+    margin-right:40px;
+}
+#blog img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+#blog .blog-details{
+    width: 50%;
+}
+#blog .blog-details a{
+    text-decoration: none;
+    font-size: 11px;
+    color: #000;
+    font-weight: 700;
+    position: relative;
+    transition: 0.03s;
+}
+#blog .blog-details a::before{
+    content: "";
+    width: 50px;
+    height: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    background-color: #000;
+    top: 4px;
+    right: -60px;
+}
+#blog .blog-details a:hover{
+    color: #088178;
+}
+#blog .blog-details a:hover:before{
+    background-color: #088178;
+}
+#blog .blog-box h1{
+    position: absolute;
+    top: -40px;
+    left: 0;
+    font-size: 70px;
+    font-weight: 700;
+    color: #c9cbce;
+    z-index: -1;/*-ve value is needed if we want to place it under the picture*/
+}
+#pagination{
+    text-align: center;
+}
+#pagination a{ /*buttons*/
+    text-decoration: none;
+    background-color: #088178;
+    padding: 15px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+}
+button.normal{/*globall stylling for buttoms*/
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: #000;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.2s;
+}
+#pagination a i{
+    font-size: 16px;
+    font-weight :4px;
+}
+.section-p1{
+    padding: 40px 80px;
+}
+.section-m1{
+    margin: 40px 0;
+}
+/*NEWSLETTER*/
+#newsletter{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    /* background-image: url(img/banner/b14.png); */
+    background-repeat: no-repeat;
+    background-position: 20% 30%;
+    background-color: #fdfeff;
+}
+#newsletter h4{
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+}
+#newsletter p{
+    font-size: 14px;
+    font-weight: 600;
+    color:#818ea0;
+}
+#newsletter p span{
+    color: yellow;
+}
+#newsletter .form{/*to keep the button and email section in one row*/
+    display: flex;
+    width: 40%;
+}
+#newsletter input{
+    height: 3.125rem;
+    padding: 0 1.25em;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: none;
+    border-top-right-radius:0 ;
+    border-bottom-right-radius: 0;
+}
+#newsletter button{
+    background-color: #088178;
+    color: #fff;
+    white-space: nowrap;
+    border-top-left-radius:0 ;
+    border-bottom-left-radius: 0;
+}
