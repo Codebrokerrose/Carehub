@@ -17,12 +17,12 @@
         <!-- navigation -->
         <?php include 'C:\xampp\htdocs\carehub\home\nav.php'; ?>
     </section>
-    <section id="page-header" class="about-header">
+    <section id="page-header" class="about-header" style="background-image: url(/carehub/img/about/banner.png);">
         <h2>#KnowUs</h2>
         <p>Everything you need to know about us</p>
     </section>
     <section id="about-head" class="section-p1">
-        <img src="/img/about/aNew.jpeg" alt="">
+        <img src="/carehub/img/about/aNew.jpeg" alt="">
         <div>
             <h2>Who Are We?</h2>
             <p>Our objective is to enhance indoor plant care, fish care and pet care success 
@@ -43,27 +43,27 @@
     </section>
     <section id="feature" class="section-p1">
         <div class="fe-box">
-            <img src="/img/features/f2.png" alt="">
+            <img src="/carehub/img/features/f2.png" alt="">
             <h6>Order Online</h6>
         </div>
         <div class="fe-box">
-            <img src="/img/features/f3.png" alt="">
+            <img src="/carehub/img/features/f3.png" alt="">
             <h6>Save Money</h6>
         </div>
         <div class="fe-box">
-            <img src="/img/features/f4.png" alt="">
+            <img src="/carehub/img/features/f4.png" alt="">
             <h6>Promotion</h6>
         </div>
         <div class="fe-box">
-            <img src="/img/features/f5.png" alt="">
+            <img src="/carehub/img/features/f5.png" alt="">
             <h6>Happy Sell</h6>
         </div>
         <div class="fe-box">
-            <img src="/img/features/f6.png" alt="">
+            <img src="/carehub/img/features/f6.png" alt="">
             <h6>24/7 Support</h6>
         </div>
     </section>
-    <section id="newsletter" class="section-p1 section-m1">
+    <section id="newsletter" class="section-p1 section-m1" style="background-image: url(/carehub/img/banner/b14.png);">
         <!----since input section and writings are not in same row so have to create two divs--->
         <div class="newstext">
             <h4>Sign Up for Newsletters</h4>
@@ -75,49 +75,6 @@
             <button class="normal">Sign Up</button>
         </div>
     </section>
-    <footer class="section-p1">
-        <div class="col">
-            <img  class="logo" src="/logo_carehub.jpeg" alt="">
-            <h4>Contact</h4>
-            <p><strong>Address</strong> kolkata, West Bengal 700024</p>
-            <p><strong>Phone:</strong> +91 81000XXXXX</p>
-            <p><strong>Hours:</strong> 10:00 - 18:00,Mon - Sat</p>
-            <div class="follow">
-                <h4>Follow Us</h4>
-                <div class="icon">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <h4>About </h4>
-            <a href="#">About Us</a>
-            <a href="#">Delivery Information</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
-        </div>
-
-        <div class="col">
-            <h4>My Account</h4>
-            <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
-            <a href="#">Help & SupportS</a>
-        </div>
-
-        <div class="col install">
-            <p>Secured Payment Gateway</p>
-            <img src="/img/pay/pay.png" alt="">
-        </div>
-        <div class="copyright">
-            <p>© 2024, CareHub Pvt Ltd</p>
-        </div>
-    </footer>
-    <script src="/js/nav.js"></script>
+    <?php include 'C:\xampp\htdocs\carehub\home\footer.php'; ?>
 </body>
 </html>
