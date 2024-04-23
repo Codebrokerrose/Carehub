@@ -13,18 +13,18 @@
 </head>
 <body>
     
-    <section id="header">
+    <section id="home">
         <!-- navigation -->
         <?php include 'C:\xampp\htdocs\carehub\home\nav.php'; ?>
     </section>
-    <section id="page-header" class="blog-header">
+    <section id="page-header" class="blog-header" style="background-image: url(/carehub/img/banner/b19.jpg);">
         <h2>#Readmore</h2>
         <p>All The New Fashion Blogs</p>
     </section>
     <section id="blog">
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/img/blog/Bnew1.jpeg" alt="">
+                <img src="/carehub/img/blog/Bnew1.jpeg" alt="">
             </div>
             <div class="blog-details">
                 <h4>Ready to Adopt a Pet</h4>
@@ -35,7 +35,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/img/blog/GettoKnowUs.PNG" alt="">
+                <img src="/carehub/img/blog/GettoKnowUs.PNG" alt="">
             </div>
             <div class="blog-details">
                 <h4>Get to know us</h4>
@@ -48,7 +48,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/img/blog/petcare.PNG" alt="">
+                <img src="/carehub/img/blog/petcare.PNG" alt="">
             </div>
             <div class="blog-details">
                 <h4>PET CARE CAREERS</h4>
@@ -59,7 +59,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/img/blog/petcare2.PNG" alt="">
+                <img src="/carehub/img/blog/petcare2.PNG" alt="">
             </div>
             <div class="blog-details">
                 <h4>Freedom of Real Life</h4>
@@ -70,7 +70,7 @@
         </div>
         <div class="blog-box">
             <div class="blog-img">
-                <img src="/img/blog/gardening.jpeg" alt="">
+                <img src="/carehub/img/blog/gardening.jpeg" alt="">
             </div>
             <div class="blog-details">
                 <h4>10 TOP GARDENING TIPS FOR BEGINNERS</h4>
@@ -95,49 +95,6 @@
             <button class="normal">Sign Up</button>
         </div> -->
     </section>
-    <footer class="section-p1">
-        <div class="col">
-            <img  class="logo" src="/logo_carehub.jpeg" alt="">
-            <h4>Contact</h4>
-            <p><strong>Address</strong> kolkata, West Bengal 700024</p>
-            <p><strong>Phone:</strong> +91 81000XXXXX</p>
-            <p><strong>Hours:</strong> 10:00 - 18:00,Mon - Sat</p>
-            <div class="follow">
-                <h4>Follow Us</h4>
-                <div class="icon">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <h4>About </h4>
-            <a href="#">About Us</a>
-            <a href="#">Delivery Information</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
-        </div>
-
-        <div class="col">
-            <h4>My Account</h4>
-            <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
-            <a href="#">Help & SupportS</a>
-        </div>
-
-        <div class="col install">
-            <p>Secured Payment Gateway</p>
-            <img src="/img/pay/pay.png" alt="">
-        </div>
-        <div class="copyright">
-            <p>© 2024, CareHub Pvt Ltd</p>
-        </div>
-    </footer>
-
+    <?php include 'C:\xampp\htdocs\carehub\home\footer.php'; ?>
 </body>
 </html>

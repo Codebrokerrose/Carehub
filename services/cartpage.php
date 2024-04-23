@@ -10,7 +10,7 @@
   <body>
     <div id="summary">
       <div id="nav">
-        <a href="/home/index.html">
+        <a href="/carehub/home/index.php">
           <svg
           id="leftArrow"
           xmlns="http://www.w3.org/2000/svg"
@@ -63,8 +63,7 @@
     <div id="container">
       <hr />
     </div>
-   <a href="payment.html"><button id="OrderPlace">Proceed to Pay</button></a> 
+   <a href="payment.php"><button id="OrderPlace">Proceed to Pay</button></a> 
   </body>
   </html>
   <script src="cartpage.js"></script>
-

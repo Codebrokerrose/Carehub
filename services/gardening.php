@@ -26,8 +26,8 @@
             </div>
         </div>
         <div>
-            <a href="/home/index.html"><h4>Home</h4></a>
-            <a href="cartpage.html"><h4>Bookings</h4></a>
+            <a href="/carehub/home/index.php"><h4>Home</h4></a>
+            <a href="cartpage.php"><h4>Bookings</h4></a>
         </div>
     </div>
     <div id="productVideo">
@@ -102,7 +102,7 @@
                 </p>
                 
 
-                <a href="cartpage.html">
+                <a href="cartpage.php">
                     <button id="OrderPlace">View Cart</button>
                 </a>
                 

@@ -31,9 +31,7 @@ section{
     top: 12%;
     /* padding: 1px; */
 }
-#page-header.about-header{
-    background-image: url(/img/banner/banner.png);
-}
+
 #page-header h2,
 #page-header p{
     color: #fff;
@@ -62,7 +60,6 @@ button.normal{/*globall stylling for buttoms*/
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url(/img/banner/b14.png);
     height: 50vh;
     background-repeat: no-repeat;
     background-position: 20% 30%;
@@ -200,57 +197,4 @@ button.normal{/*globall stylling for buttoms*/
     font-size: 16px;
     font-weight: 600;
     color: #000;
-}
-/* Footer */
-footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: rgba(199, 195, 195, 0.5);
-}
-footer .col{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-/*footer .logo{
-
-}*/
-footer h4{
-    font-size: 14px;
-    padding-bottom: 20px;
-}
-footer p{
-    font-size: 13px;
-    margin: 0 0 8px 0;
-}
-footer a{
-    font-size: 13px;
-    text-decoration: none;
-    color: #222;
-    margin-bottom: 10px;
-}
-footer .follow{
-    margin-top: 20px;
-}
-footer .follow i{
-    color: #465b52;
-    padding-right: 4px;
-    cursor: pointer;
-}
-footer .install .row img{
-    border: 1px solid #088178;
-    border-radius: 6px;
-}
-footer .install img{
-    margin: 10px 0 15px 0;
-}
-footer .follow i:hover,
-footer a:hover{
-    color:#088178;
-}
-footer .copyright{
-    width: 100%;
-    text-align: center;
 }

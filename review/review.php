@@ -19,63 +19,7 @@
 
 <!-- header section starts -->
 <section id="header">
-<nav>
-    <div class="logo">
-        <img src="/logo_carehub.jpeg" class="logo">
-    </div>
-
-    <ul>
-        <li><a href="/home/index.html">Home</a></li>
-        <li><a href="/about/About.html">About</a></li>
-        <li><a href="/blog/Blog.html">Blog</a></li>
-        <li><a href="#review">Review</a></li>
-        <li><a href="/contactus/Contact.html">Contact</a></li>
-    </ul>
-
-    <div class="icon">
-      <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-      <div class="search">
-          <div class="Icon"><i class="fa-solid fa-magnifying-glass"></i> </div>
-          <div class="input">
-              <input type="text" placeholder="search" id="mysearch">
-          </div>
-          <span class="clear" onclick="document.getElementById('mysearch').value=''"></span>
-      </div>
-      <div class="othericon"><i class="fa-solid fa-heart"></i>
-          <a href="/services/cartpage.html"><i class="fa-solid fa-cart-shopping"></i></a>
-          <i class="icofont-user"></i></div>
-  </div>
-    <img src="/usericon.png" alt="usericon" class="user-pic" onclick="toggleMenu()">
-    <div class="sub-menu-wrap" id="subMenu">
-        <div class="sub-menu">
-            <div class="user-info">
-                <img src="/usericon.png" alt="usericon">
-                <h4>Ankana Saha</h4>
-            </div>
-            <hr>
-            <a href="#" class="sub-menu-link">
-                <img src="/usericon.png" alt="not loaded">
-                <span class="options">Edit Profile</span>
-                <span>></span>
-            </a>
-            <a href="#" class="sub-menu-link">
-                <img src="https://static-00.iconduck.com/assets.00/settings-icon-1964x2048-8nigtrtt.png" alt="not loaded">
-                <span class="options">Settings & Privacy</span>
-                <span>></span>
-            </a>
-            <a href="#" class="sub-menu-link">
-                <img src="https://static-00.iconduck.com/assets.00/help-icon-256x256-qc8wqct6.png" alt="not loaded">
-                <span class="options">Help & Support</span>
-                <span>></span>
-            </a>
-            <a href="#" class="sub-menu-link">
-                <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" alt="not loaded">
-                <span class="options">Logout</span>
-                <span>></span>
-            </a>
-        </div>
-    </div>
-</nav>
+<?php include 'C:\xampp\htdocs\carehub\home\nav.php'; ?>
 </section>
 <!-- header section ends-->
 
@@ -136,7 +80,7 @@
       </div>
     </div>
   </header>
-<script src="/js/nav.js"></script>
 
+  <?php include 'C:\xampp\htdocs\carehub\home\footer.php'; ?>
 </body>
 </html>

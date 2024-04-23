@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carehub</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> <!--links to an external CSS file hosted on the Font Awesome Pro CDN, providing access to Font Awesome icons-->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,18 +31,18 @@
     <div class="image">  
     </div>
     <div class="form">
-        <form action="/carehub/home/index.php" method="post" class="sign-in-form">
+        <form action="" method="post" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username">
+                <input type="text" placeholder="Username" name="user" required>
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" name="pass" required>
             </div>
-            <input type="submit" value="Login" class="btn">
-            <p class="social-text">Or Sign in with social platform</p>
+            <input type="submit" value="Login" name="sub" class="btn">
+            <!-- <p class="social-text">Or Sign in with social platform</p>
             <div class="social-media">
                 <a href="#" class="social-icon">
                     <i class="fab fa-facebook"></i>
@@ -56,7 +56,7 @@
                 <a href="" class="social-icon">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-            </div>
+            </div> -->
             <!-- <br><br>
             <p class="account-text">Don't have an account? <a href="signup.php" id="sign-up-btn2">Sign up</a></p> -->
         </form>
@@ -67,3 +67,29 @@
     </div>
 </body>
 </html>
+<?php
+if(isset($_POST['sub'])&& ($_POST['sub']=='Login')){
+
+$log="select * from `register` where `username`='".$_POST['user']."' and `password`='".$_POST['pass']."'";
+$p=mysqli_query($db_con,$log);
+if($p && mysqli_num_rows($p)>0){
+        // Fetching form data
+        $username = $_POST['user'];
+        $password = $_POST['pass']; // Note: In a real-world scenario, you should encrypt the password before storing it in the database
+    
+        // SQL query to insert data into the login table
+        $sql = "INSERT INTO `login` (username,  password) VALUES ('$username', '$password')";
+        $db_con->query($sql);
+        // // Executing the SQL query
+        if ($db_con->query($sql) === TRUE) {  
+            echo "New record created successfully";
+        } 
+        $_SESSION['username']=$_POST['user'];
+        // Redirect the user to another page (optional)
+        header("Location: /carehub/home/index.php"); // Redirect to the homepage or any other page
+        exit();
+}
+
+}
+?>
+</table>
