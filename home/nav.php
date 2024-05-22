@@ -1,5 +1,23 @@
 <?php
   include("C:\\xampp\\htdocs\\carehub\\form\\config.php");
+
+  function pdo_connect_mysql() {
+    // Update the details below with your MySQL details
+    $DATABASE_HOST = 'localhost';
+    $DATABASE_USER = 'root';
+    $DATABASE_PASS = '';
+    $DATABASE_NAME = 'carehub';
+    try {
+        return new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME . ';charset=utf8', $DATABASE_USER, $DATABASE_PASS);
+    } catch (PDOException $exception) {
+        // If there is an error with the connection, stop the script and display the error.
+        exit('Failed to connect to database!');
+    }
+  }
+
+  $pdo = pdo_connect_mysql();
+  // Get the number of items in the shopping cart, which will be displayed in the header.
+  $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,12 +28,12 @@
     <title>navigation</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" /> <!--links to an external CSS file hosted on the Font Awesome Pro CDN, providing access to Font Awesome icons-->
-    <script src="https://kit.fontawesome.com/f75e97ac39.js" crossorigin="anonymous"></script> <!-- imports the Font Awesome JavaScript kit from its CDN, enabling dynamic loading of Font Awesome icons.-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--This links to another external CSS file hosted on the Font Awesome CDN, providing access to Font Awesome version 6.1.1 icons. The integrity attribute ensures that the file has not been tampered with, and the crossorigin attribute specifies how to handle requests from different origins.-->
-  </head>
-  <style>
-    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <script src="https://kit.fontawesome.com/f75e97ac39.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+/* Add your CSS styles here */
 html{
     scroll-behavior: smooth;
 }
@@ -35,11 +53,11 @@ section nav{
 }
 
 section nav .logo img{
-    width: 100px;
+    width: 90px;
     cursor: pointer;
     margin: 7px 0;
     position: absolute;
-    left: 5%;
+    left: 7%;
 
 }
 
@@ -346,52 +364,77 @@ section nav .icon i:hover{
   .button:hover {
     background-color:  white  ;
   }
+  .top-nav{
+        background-color:black;
+        color:white;
+        padding:10px;
+        display: flex;
+    align-items: center;
+    position: absolute;
+    top:13%;
+    left:80%;
+ 
+    }
+    .top-nav >a {
+    text-decoration: none;
+    color: white;
+ 
+}
 
-  </style>
+.cart{
+    display: inline-block;
+	text-align: center;
+	background-color: #63748e;
+	border-radius: 50%;
+	color: #FFFFFF;
+	font-size: 12px;
+	line-height: 16px;
+	width: 16px;
+	height: 16px;
+	font-weight: bold;
+	position: absolute;
+	top: 22px;
+
+}
+</style>
 <body>
+    <!-- navigation -->
+    <nav>
+        <div class="logo">
+            <img src="/carehub/logo_carehub.jpeg" class="logo">
+        </div>
 
-        <!-- navigation -->
-        <nav>
-            <div class="logo">
-                <img src="/carehub/logo_carehub.jpeg" class="logo">
-            </div>
+        <ul>
+            <li><a href="/carehub/home/index.php">Home</a></li>
+            <li><a href="/carehub/about/About.php">About</a></li>
+            <li><a href="/carehub/blog/Blog.php">Blog</a></li>
+            <li><a href="/carehub/review/review_page.php">Review</a></li>
+            <li><a href="/carehub/contactus/Contact.php">Contact</a></li>
+        </ul>
 
-            <ul>
-                <li><a href="/carehub/home/index.php">Home</a></li>
-                <li><a href="/carehub/about/About.php">About</a></li>
-                <li><a href="/carehub/blog/Blog.php">Blog</a></li>
-                <li><a href="/carehub/review/review.php">Review</a></li>
-                <li><a href="/carehub/contactus/Contact.php">Contact</a></li>
-            </ul>
-
-            <div class="icon">
-                <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-                <div class="search">
-                    <div class="Icon"><i class="fa-solid fa-magnifying-glass"></i> </div>
-                    <div class="input">
-                        <input type="text" placeholder="search" id="mysearch">
-                    </div>
-                    <span class="clear" onclick="document.getElementById('mysearch').value=''"></span>
+        <div class="icon">
+            <div class="search">
+                <div class="Icon"><i class="fa-solid fa-magnifying-glass"></i> </div>
+                <div class="input">
+                    <input type="text" placeholder="search" id="mysearch">
                 </div>
-                <div class="result-box">
-                    <!-- <ul>
-                        <li>js</li>
-                        <li>css</li>
-                    </ul> -->
-                </div>
-                <div class="othericon">
-                    <!-- <i class="fa-solid fa-heart"></i> -->
-                    <a href="/carehub/services/cartpage.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                    <i class="icofont-user"></i></div>
+                <span class="clear" onclick="document.getElementById('mysearch').value=''"></span>
             </div>
-            <?php if (isset($_SESSION['username'])){?>
-                <img src="/carehub/usericon.png" alt="usericon" class="user-pic" onclick="toggleMenu()">
+            <div class="result-box"></div>
+            <div class="othericon">
+                <a href="../services/index2.php?page=cart">
+                    <i class="fas fa-shopping-cart"></i><span class="cart"><?= $num_items_in_cart ?></span>
+                </a>
+                <i class="icofont-user"></i>
+            </div>
+        </div>
+        <?php if (isset($_SESSION['username'])) { ?>
+            <img src="/carehub/usericon.png" alt="usericon" class="user-pic" onclick="toggleMenu()">
             <div class="sub-menu-wrap" id="subMenu">
                 <div class="sub-menu">
                     <div class="user-info">
                         <img src="/carehub/usericon.png" alt="usericon">
-                        <h4><?php if (isset($_SESSION['username'])){ echo $_SESSION['username'];}else{ echo "Ankana Saha";  }?></h4>
-                        
+                        <h4><?= $_SESSION['username'] ?></h4>
                     </div>
                     <hr>
                     <a href="#" class="sub-menu-link">
@@ -416,17 +459,14 @@ section nav .icon i:hover{
                     </a>
                 </div>
             </div>
-            <?php  }else{  ?>
-                <div class="log">
-                <!-- <button type="button" class="btn btn-outline-primary  button"><a href="/form/signin.php">Sign-in</a></button> -->
-                <button class="button "><a href="/carehub/form/signup.php">Sign-up</a></button>
-                </div>
-            <?php } ?>
-            
-            
-        </nav>
+        <?php } else { ?>
+            <div class="log">
+                <button class="button"><a href="/carehub/form/signup.php">Sign-up</a></button>
+            </div>
+        <?php } ?>
+    </nav>
 
-        <script src="/carehub/js/nav.js"></script>
-        <script src="/carehub/js/search.js"></script>
+    <script src="/carehub/js/nav.js"></script>
+    <script src="/carehub/js/search.js"></script>
 </body>
 </html>

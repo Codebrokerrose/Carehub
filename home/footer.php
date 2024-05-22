@@ -38,9 +38,13 @@ footer .col{
     margin-top: 15px;
     margin-bottom: 20px;
 }
-/*footer .logo{
+footer .logo{
+    width: 70px;
+    background: #e5e5e5;
+    border-radius: 50%;
+    margin-bottom: 20px;
 
-}*/
+}
 footer h4{
     font-size: 14px;
     padding-bottom: 20px;
@@ -94,13 +98,17 @@ footer .copyright{
   .section-p1{
     padding: 40px 80px;
 }
+ 
+#col1,#col2,#col3{
+    margin-top:105px;
+}
 
   </style>
 <body>
         <!-- footer -->
         <footer class="section-p1">
             <div class="col">
-                <img  class="logo" src="/carehub/logo_carehub.jpeg" alt="">
+                <img  class="logo"  src="/carehub/logo_carehub.jpeg" alt="">
                 <h4>Contact</h4>
                 <p><strong>Address</strong> kolkata, West Bengal 700024</p>
                 <p><strong>Phone:</strong> +91 81000XXXXX</p>
@@ -115,7 +123,7 @@ footer .copyright{
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col" id="col1">
                 <h4>About </h4>
                 <a href="#">About Us</a>
                 <a href="#">Delivery Information</a>
@@ -124,7 +132,7 @@ footer .copyright{
                 <a href="#">Contact Us</a>
             </div>
     
-            <div class="col">
+            <div class="col" id="col2">
                 <h4>My Account</h4>
                 <a href="#">Sign In</a>
                 <a href="#">View Cart</a>
@@ -133,7 +141,7 @@ footer .copyright{
                 <a href="#">Help & SupportS</a>
             </div>
     
-            <div class="col install">
+            <div class="col install" id="col3">
                 <p>Secured Payment Gateway</p>
                 <img src="/carehub/img/pay/pay.png" alt="">
             </div>

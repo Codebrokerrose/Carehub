@@ -80,8 +80,17 @@ if (isset($_POST['submit'])&& ($_POST['submit']=='SIGNUP')) {
     // Fetching form data
     $username = $_POST['user'];
     $email = $_POST['email'];
-    $password = $_POST['pass']; // Note: In a real-world scenario, you should encrypt the password before storing it in the database
+    $password = $_POST['pass']; 
+    // Note: In a real-world scenario, you should encrypt the password before storing it in the database
+ // Admin login check
+ $query = $conn->query("SELECT * FROM `admin` WHERE `username` = '$username' AND `password` = '$password' AND `email` ='$email'") or die($conn->error);
+ $fetch = $query->fetch_array();
+ $valid = $query->num_rows;
 
+ if($valid > 0){
+     $_SESSION['admin_id'] = $fetch['admin_id'];
+     header("location:../../carehub-admin/public_html/admin/dashboard.php");
+ } else {
     // SQL query to insert data into the register table
     $sql = "INSERT INTO register (username, email, password) VALUES ('$username', '$email', '$password')";
     
@@ -95,5 +104,8 @@ if (isset($_POST['submit'])&& ($_POST['submit']=='SIGNUP')) {
     } 
     
 }
+$conn->close();
+}
+
 
 ?>
