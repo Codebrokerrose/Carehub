@@ -1,11 +1,11 @@
 <?php
 
-// Check if the user has completed the checkout process
-if (!isset($_SESSION['checkout_complete'])) {
-    // If the checkout process has not been completed, redirect to the cart page
-    header('Location: index.php?page=cart');
-    exit;
-}
+// // Check if the user has completed the checkout process
+// if (!isset($_SESSION['checkout_complete'])) {
+//     // If the checkout process has not been completed, redirect to the cart page
+//     header('Location: index.php?page=cart');
+//     exit;
+// }
 
 // Get the products that were removed from the cart
 $products = isset($_SESSION['removed_products']) ? $_SESSION['removed_products'] : array();

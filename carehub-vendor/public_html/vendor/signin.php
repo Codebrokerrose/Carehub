@@ -5,45 +5,49 @@ session_start();
 // Check if the signin form is submitted
 if (isset($_POST['signin'])) {
     // Get form data
-    $company = $_POST['company'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $type = $_POST['type'];
+    $address = $_POST['address'];
+    $mobile = $_POST['mobile'];
 
     // Establish database connection
     $conn = new mysqli("localhost", "root", "", "carehub") or die(mysqli_error());
 
     // Escape input values to prevent SQL injection
-    $company = $conn->real_escape_string($company);
+    $name = $conn->real_escape_string($name);
     $email = $conn->real_escape_string($email);
     $username = $conn->real_escape_string($username);
     $password = $conn->real_escape_string($password);
-    $type = $conn->real_escape_string($type);
+    $address = $conn->real_escape_string($address);
+    $mobile = $conn->real_escape_string($mobile);
+
 
     // Insert registration record into vendor_register table
-    $insert_query = "INSERT INTO `vendor_register` (`id`, `full_name`, `email`, `username`, `password`, `service_type`) 
-                     VALUES ('', '$company', '$email', '$username', '$password', '$type')";
+    $insert_query = "INSERT INTO `vendor-register` (`user_no`,`name`,`password`, `email`,  `address`, `mobile`, `status`) 
+                     VALUES ('','$name','$password', '$email',  '$address', '$mobile', '0')";
 
     // Execute the query
-    $conn->query($insert_query);
+    if ($conn->query($insert_query) === TRUE) {
+        // Redirect to dashboard if registration is successful
+        $_SESSION['username'] = $username;
+        header("location:./dashboard.php");
+        exit(); // Make sure to exit after redirection
+    } else {
+        echo "Error: " . $insert_query . "<br>" . $conn->error;
+    }
 
     // Close database connection
     $conn->close();
-
-    // Redirect to dashboard if registration is successful
-    $_SESSION['username'] = $username;
-    header("location:./dashboard.php");
-    exit(); // Make sure to exit after redirection
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Panel</title>
+    <title>Vendor || Panel</title>
     <link rel="shortcut icon" href="../uploads/cicon.png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -164,28 +168,30 @@ if (isset($_POST['signin'])) {
     </header>
     <br><br><br>
     <div class="container">
-  
         <div class="clsDiv">
             <h2 style="text-align:center;"><font color="white">Vendor</font></h2>
             <hr/>
             <form id="frmLogin" method="post" action="">
                 <div class="user-input-box">
-                    <label for="company">Full name of service producer:</label>
-                    <input class="clsTxt" type="text" name="company" placeholder="Enter company name">
-                    <label for="email"><font color="white">Email</font></label>
-                    <input class="clsTxt" type="email" name="email" placeholder="Enter email">
+                    <label for="name">Full Name:</label>
+                    <input class="clsTxt" type="text" name="name" placeholder="Enter full name" required>
                 </div>
                 <div class="user-input-box">
-                    <label for="username"><font color="white">Username</font></label>
-                    <input class="clsTxt" type="text" name="username" placeholder="Enter username">
+                    <label for="email"><font color="white">Email</font></label>
+                    <input class="clsTxt" type="email" name="email" placeholder="Enter email" required>
                 </div>
+     
                 <div class="user-input-box">
                     <label for="password"><font color="white">Password</font></label>
-                    <input class="clsTxt" type="password" name="password" placeholder="Enter password">
+                    <input class="clsTxt" type="password" name="password" placeholder="Enter password" required>
                 </div>
                 <div class="user-input-box">
-                    <label for="type">Service (eg. garden, aquarium, pet) :</label>
-                    <input class="clsTxt" type="text" name="type" placeholder="Enter service type ">
+                    <label for="address">Address:</label>
+                    <input class="clsTxt" type="text" name="address" placeholder="Enter address" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="mobile">Mobile:</label>
+                    <input class="clsTxt" type="text" name="mobile" placeholder="Enter mobile number" required>
                 </div>
                 <a href="index.php">Already have an account? Sign in</a>
                 <br><br>

@@ -1,4 +1,44 @@
 <?php
+if (isset($_GET['id']) && isset($_GET['fullname'])) {
+  $home_id = $_GET['id'];
+  $fullname = $_GET['fullname'];
+
+  // Database connection
+  $conn = new mysqli("localhost", "root", "", "carehub");
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  // Fetch the task details
+  $taskQuery = $conn->query("SELECT * FROM `checkout_products` WHERE `checkout_id`='$home_id'");
+  if ($taskQuery->num_rows > 0) {
+      $task = $taskQuery->fetch_assoc();
+      $activity = $task['product_title'];
+
+      // Get the current date and time
+      $tdate = date('Y-m-d');
+      $dtime = date('H:i:s');
+
+      // Insert data into home_tasks table
+      $insertQuery = "INSERT INTO `home_tasks` (`home_id`, `id`, `fullname`, `activity`, `tdate`, `dtime`, `status`)
+                      VALUES ('$home_id', '$home_id', '$fullname', '$activity', '$tdate', '$dtime', '1')";
+      
+      if ($conn->query($insertQuery) === TRUE) {
+          echo "Record updated successfully";
+      } else {
+          echo "Error: " . $insertQuery . "<br>" . $conn->error;
+      }
+  } else {
+      echo "No task found for the given ID.";
+  }
+
+  // Close the connection
+  $conn->close();
+} else {
+  echo "Invalid request.";
+}
+?>
+<?php
 require_once 'logincheck.php';
 ?>
 <!DOCTYPE html>
@@ -62,40 +102,9 @@ require_once 'logincheck.php';
                       <td>
                         <center>
                           <a href="process.php?id=<?php echo $fetch['id']; ?>&fullname=<?php echo $fetch['fullname']; ?>" class="btn btn-sm btn-info">Process <span class="badge"><?php echo $f['total']; ?></span></a>
-                          <a href="process.php?id=<?php echo $fetch['id']; ?>&fullname=<?php echo $fetch['fullname']; ?>" class="btn btn-sm btn-warning" name="update">
-    <span class="glyphicon glyphicon-pencil"></span> Update
-</a>
-
-                          <?php
-                       
-if (isset($_GET['id']) && isset($_GET['fullname'])) {
-  $home_id = $_GET['id'];
-  $fullname = $_GET['fullname'];
-
-
-  // Fetch the task details
-  $taskQuery = $conn->query("SELECT * FROM `checkout_products` WHERE `checkout_id`='$home_id'");
-  $task = $taskQuery->fetch_assoc();
-  $activity = $task['product_title'];
-
-  // Get the current date and time
-  $tdate = date('Y-m-d');
-  $dtime = date('H:i:s');
-
-  // Insert data into home_tasks table
-  $insertQuery = "INSERT INTO `home_tasks` (`home_id`, `id`, `fullname`, `activity`, `tdate`, `dtime`, `status`)
-                  VALUES ('$home_id', '$home_id', '$fullname', '$activity', '$tdate', '$dtime', '1')";
-  
-  if ($conn->query($insertQuery) === TRUE) {
-      echo "Record updated successfully";
-  } else {
-      echo "Error: " . $insertQuery . "<br>" . $conn->error;
-  }
-
-  // Close the connection
-  $conn->close();
-} 
-                          ?>
+                          <a href="manage_house.php?id=<?php echo $fetch['id']; ?>&fullname=<?php echo $fetch['fullname']; ?>" class="btn btn-sm btn-warning" name="update">
+                            <span class="glyphicon glyphicon-pencil"></span> Update
+                          </a>
                         </center>
                       </td>
                     </tr>

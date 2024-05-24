@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE IF NOT EXISTS  `admin` (
   `admin_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -48,7 +48,7 @@ INSERT INTO `admin` (`admin_id`, `username`, `email`, `password`) VALUES
 -- Table structure for table `home_tasks`
 --
 
-CREATE TABLE `home_tasks` (
+CREATE TABLE IF NOT EXISTS  `home_tasks` (
   `home_id` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `fullname` varchar(50) NOT NULL,
@@ -74,16 +74,15 @@ INSERT INTO `home_tasks` (`home_id`, `id`, `fullname`, `activity`, `tdate`, `dti
 -- Table structure for table `users`
 --
 
--- CREATE TABLE `users` (
---   `user_no` int(11) NOT NULL,
---   `image` varchar(50) NOT NULL,
---   `name` varchar(50) NOT NULL,
---   `password` varchar(50) NOT NULL,
---   `email` varchar(50) NOT NULL,
---   `address` varchar(50) NOT NULL,
---   `mobile` varchar(50) NOT NULL,
---   `status` enum('0','1') NOT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `vendor-register` (
+  `user_no` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
+  `status` enum('0','1') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -95,13 +94,13 @@ INSERT INTO `home_tasks` (`home_id`, `id`, `fullname`, `activity`, `tdate`, `dti
 -- (25, '4545-504652.png', 'bruhos bruhos', '123', 'bruhos@gmail.com', 'dvdvvdvd', '09467556581', '0');
 
 
-CREATE TABLE `register` (
+CREATE TABLE IF NOT EXISTS  `register` (
   `username` VARCHAR(50) PRIMARY KEY,
   `email` VARCHAR(100),
   `password` VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE `login` (
+CREATE TABLE IF NOT EXISTS  `login` (
   `username` VARCHAR(50) PRIMARY KEY,
   `password` VARCHAR(50) NOT NULL
 );
@@ -155,22 +154,14 @@ ALTER TABLE `home_tasks`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-CREATE TABLE `vendor-login` (
+CREATE TABLE IF NOT EXISTS  `vendor-login` (
   `username` VARCHAR(50) PRIMARY KEY,
   `password` VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE `vendor-register` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `service_type` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-);
 
-CREATE TABLE `ad_newservice` (
+
+CREATE TABLE IF NOT EXISTS  `ad_newservice` (
     `image` VARCHAR(255),
     `name` VARCHAR(255) NOT NULL,
     `price` DECIMAL(10, 2),

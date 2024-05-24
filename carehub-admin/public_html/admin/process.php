@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HOME CLEAN | SERVICES</title>
+	<title>HOME SERVICES</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <link rel = "shortcut icon" href = "../images/cicon.png" />
@@ -51,12 +51,12 @@
                    <?php
                     $conn = new mysqli("localhost","root","","carehub") or die(mysqli_error());
                     
-                    $query = $conn->query("SELECT * FROM `home_tasks` WHERE `user_no` ='$_GET[id]' && `name` = '$_GET[name]' ") or die(mysqli_error());
+                    $query = $conn->query("SELECT * FROM `home_tasks` WHERE `id` ='$_GET[id]' && `fullname` = '$_GET[fullname]' ") or die(mysqli_error());
                     while($fetch = $query->fetch_array()){
                   ?>
                     <tr>
-                      <td class="hidden"><?php echo $fetch['user_no']?></td>
-                      <td><?php echo $fetch['name']?></td>
+                      <td class="hidden"><?php echo $fetch['id']?></td>
+                      <td><?php echo $fetch['fullname']?></td>
                       <td><?php echo $fetch['activity']?></td>
                       <td><?php echo $fetch['tdate']?></td>
                       <td><?php echo $fetch['dtime']?></td>

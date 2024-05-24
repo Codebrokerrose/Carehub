@@ -4,7 +4,7 @@
 if (isset($_REQUEST['unconfirm'])) {
     $aeid = intval($_GET['unconfirm']);
     $status = 1;
-    $sql = "UPDATE users SET status=:status WHERE user_no=:aeid";
+    $sql = "UPDATE `vendor-register` SET status=:status WHERE user_no=:aeid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
     $query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
@@ -15,7 +15,7 @@ if (isset($_REQUEST['unconfirm'])) {
 if (isset($_REQUEST['confirm'])) {
     $aeid = intval($_GET['confirm']);
     $status = 0;
-    $sql = "UPDATE users SET status=:status WHERE user_no=:aeid";
+    $sql = "UPDATE `vendor-register` SET status=:status WHERE user_no=:aeid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
     $query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
@@ -26,7 +26,7 @@ if (isset($_REQUEST['delete'])) {
     $user_no = $_GET['delete']; // Assuming user_no is unique
     
     // Delete user from register table
-    $sql = "DELETE FROM `users` WHERE `user_no` = :user_no";
+    $sql = "DELETE FROM `vendor-register` WHERE `user_no` = :user_no";
     $query = $dbh->prepare($sql);
     $query->bindParam(':user_no', $user_no, PDO::PARAM_STR);
     
@@ -96,7 +96,6 @@ if (isset($_REQUEST['delete'])) {
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Image</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Phone</th>
@@ -108,12 +107,11 @@ if (isset($_REQUEST['delete'])) {
                                         <tbody>
                                             <?php
                                             $conn = new mysqli("localhost", "root", "", "carehub") or die(mysqli_error());
-                                            $query = $conn->query("SELECT * FROM `users` ORDER BY `user_no` DESC") or die(mysqli_error());
+                                            $query = $conn->query("SELECT * FROM `vendor-register` ORDER BY `user_no` DESC") or die(mysqli_error());
                                             while ($row = mysqli_fetch_array($query)) {
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $row['user_no']; ?></td>
-                                                    <td><img src="../uploads/<?php echo $row["image"]; ?>" style="width:50px; border-radius:50%;"/></td>
                                                     <td><?php echo $row['name']; ?></td>
                                                     <td><?php echo $row['email']; ?></td>
                                                     <td><?php echo $row['mobile']; ?></td>
