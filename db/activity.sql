@@ -50,8 +50,8 @@ INSERT INTO `admin` (`admin_id`, `username`, `email`, `password`) VALUES
 
 CREATE TABLE `home_tasks` (
   `home_id` int(11) NOT NULL,
-  `user_no` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
   `activity` varchar(255) NOT NULL,
   `tdate` date NOT NULL,
   `dtime` text NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `home_tasks` (
 -- Dumping data for table `home_tasks`
 --
 
-INSERT INTO `home_tasks` (`home_id`, `user_no`, `name`, `activity`, `tdate`, `dtime`, `status`) VALUES
+INSERT INTO `home_tasks` (`home_id`, `id`, `fullname`, `activity`, `tdate`, `dtime`, `status`) VALUES
 (44, 22, 'ALvin Gumatay', 'ddcd', '2022-04-15', '4:57:pm', '1'),
 (59, 21, 'ALvin Gumatay', 'd', '2022-04-18', '6:41:pm', '1'),
 (60, 21, 'ALvin Gumatay', 'c', '2022-04-18', '', '0'),
@@ -74,25 +74,25 @@ INSERT INTO `home_tasks` (`home_id`, `user_no`, `name`, `activity`, `tdate`, `dt
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `user_no` int(11) NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `mobile` varchar(50) NOT NULL,
-  `status` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- CREATE TABLE `users` (
+--   `user_no` int(11) NOT NULL,
+--   `image` varchar(50) NOT NULL,
+--   `name` varchar(50) NOT NULL,
+--   `password` varchar(50) NOT NULL,
+--   `email` varchar(50) NOT NULL,
+--   `address` varchar(50) NOT NULL,
+--   `mobile` varchar(50) NOT NULL,
+--   `status` enum('0','1') NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_no`, `image`, `name`, `password`, `email`, `address`, `mobile`, `status`) VALUES
-(21, '7615-403509.jpg', 'ALvin Gumatay', '123', 'alvingumatay13@gmail.com', '7 orovista village, concepcion uno, marikina city', '09462886584', '1'),
-(23, '8614-3.jpg', 'ronnini', '123', 'hiwagaalias@gmail.com', 'ier0i0eriere', '090902092', '1'),
-(25, '4545-504652.png', 'bruhos bruhos', '123', 'bruhos@gmail.com', 'dvdvvdvd', '09467556581', '0');
+-- INSERT INTO `users` (`user_no`, `image`, `name`, `password`, `email`, `address`, `mobile`, `status`) VALUES
+-- (21, '7615-403509.jpg', 'ALvin Gumatay', '123', 'alvingumatay13@gmail.com', '7 orovista village, concepcion uno, marikina city', '09462886584', '1'),
+-- (23, '8614-3.jpg', 'ronnini', '123', 'hiwagaalias@gmail.com', 'ier0i0eriere', '090902092', '1'),
+-- (25, '4545-504652.png', 'bruhos bruhos', '123', 'bruhos@gmail.com', 'dvdvvdvd', '09467556581', '0');
 
 
 CREATE TABLE `register` (
@@ -125,9 +125,9 @@ ALTER TABLE `home_tasks`
 --
 -- Indexes for table `users`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_no`),
-  ADD UNIQUE KEY `user_no` (`user_no`);
+-- ALTER TABLE `users`
+--   ADD PRIMARY KEY (`user_no`),
+--   ADD UNIQUE KEY `user_no` (`user_no`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -147,10 +147,10 @@ ALTER TABLE `home_tasks`
 
 --
 -- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-COMMIT;
+-- --
+-- ALTER TABLE `users`
+--   MODIFY `user_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

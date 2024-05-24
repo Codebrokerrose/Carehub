@@ -223,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
                                                 <th>#</th>
                                                 <th>Image</th>
                                                 <th>Name</th>
-                                                <th>Price</th>
+                                                <th>Price</th> 
                                                 <th>Details</th>
                                                 <!-- <th>Contact</th> -->
                                                 <th>Status</th>

@@ -41,17 +41,21 @@ echo <<<EOT
         <header>
             <div class="content-wrapper">
             <img class="logo" src="logo_carehub.jpeg" alt="logo">
-                <h1>Personilized Aquarium Care <br> <i class="fa-solid"></i></h1>
+                <h1>Personilized Aquarium Care </h1>
                 <nav>
                     <a href="../home/index.php">Home</a>
                     <a href="index2.php">Details</a>
                     <a href="index2.php?page=products2">Products</a>
+                    <a href="index2.php?page=book">Orders</a>
                 </nav>
                 <div class="link-icons">
                     <a href="index2.php?page=cart">
 						<i class="fas fa-shopping-cart"></i><span>$num_items_in_cart</span>
 					</a>
+                   
                 </div>
+               
+                
             </div>
         </header>
         <main>

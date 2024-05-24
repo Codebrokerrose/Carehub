@@ -47,6 +47,7 @@ echo <<<EOT
                     <a href="../home/index.php">Home</a>
                     <a href="index.php">Details</a>
                     <a href="index.php?page=products">Products</a>
+                    <a href="index.php?page=book">Orders</a>
                 </nav>
                 <div class="link-icons">
                     <a href="index.php?page=cart">

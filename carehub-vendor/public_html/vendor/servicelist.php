@@ -66,8 +66,8 @@ require_once 'logincheck.php';
                     </thead>
                     <tbody>
                       <?php
-                      $conn = new mysqli("localhost", "root", "", "shoppingcart") or die(mysqli_error());
-                      $query = $conn->query("SELECT * FROM `products` ORDER BY `price` DESC") or die(mysqli_error());
+                      $conn = new mysqli("localhost", "root", "", "carehub") or die(mysqli_error());
+                      $query = $conn->query("SELECT * FROM `category` ORDER BY `price` DESC") or die(mysqli_error());
                       $count = 1;
                       while ($row = mysqli_fetch_array($query)) {
                         ?>
