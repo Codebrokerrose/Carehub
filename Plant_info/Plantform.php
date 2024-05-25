@@ -17,12 +17,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
-    a{
-        text-decoration:none;
-        color:black;
+    a {
+        text-decoration: none;
+        color: black;
     }
-
 </style>
+
 <body>
     <section id="header">
         <!-- navigation -->
@@ -59,6 +59,9 @@
             </div>
         </form>
         <?php
+        $plant_name = $soil_type = $temperature = "";
+        $watering_timing = $pesticide_info = $fertilizer_info = "";
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $plant_name = $_POST['Plant_Name'];
             $soil_type = $_POST['Soil_Type'];
@@ -87,21 +90,16 @@
 
             if ($result->num_rows > 0) {
                 // Fetch the data
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='alert alert-success mt-3' role='alert'>
-                                Watering Timings: <br><br>" . $row["watering_timing"] . "
-                              </div>";
-                    echo "<div class='alert alert-success mt-3' role='alert'>
-                                Pesticide Info:<br><br> " . $row["pestiside_info"] . "
-                              </div>";
-                    echo "<div class='alert alert-success mt-3' role='alert'>
-                                Fertilizer Info:<br> <br>" . $row["fertilizer_info"] . "
-                              </div>";
-                }
+                $row = $result->fetch_assoc();
+                $watering_timing = $row['watering_timing'];
+                $pesticide_info = $row['pestiside_info'];
+                $fertilizer_info = $row['fertilizer_info'];
             } else {
                 echo "<div class='alert alert-danger mt-3' role='alert'>
-                            No matching records found.
+                            <p>No matching records found.</p>
+                            <img src='/carehub/img/cards/recordnotfound.jpg' alt='No records found' style='width: 70%; height: 90%;'>
                           </div>";
+
             }
 
             // Close the connection
@@ -110,6 +108,39 @@
         }
         ?>
     </section>
+
+    <?php if ($watering_timing || $pesticide_info || $fertilizer_info): ?>
+        <div class="container">
+            <div class="card">
+                <div class="image">
+                    <img src="/carehub/img/cards/2.jpg" alt="Plant Image">
+                </div>
+                <div class="content">
+                    <h3>Watering Schedule</h3>
+                    <p><?php echo $watering_timing; ?></p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/carehub/img/cards/pesticide.jpg" alt="Pesticide">
+                </div>
+                <div class="content">
+                    <h3>Pesticide Info</h3>
+                    <p><?php echo $pesticide_info; ?></p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="/carehub/img/cards/fertilizer.jpg" alt="Pesticide">
+                </div>
+                <div class="content">
+                    <h3>Fertilizer Info</h3>
+                    <p><?php echo $fertilizer_info; ?></p>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <?php include 'C:\xampp\htdocs\carehub\home\footer.php'; ?>
 </body>
 
