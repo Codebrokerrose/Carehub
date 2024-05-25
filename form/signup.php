@@ -92,10 +92,10 @@ if (isset($_POST['submit'])&& ($_POST['submit']=='SIGNUP')) {
      header("location:../../carehub-admin/public_html/admin/dashboard.php");
  } else {
     // SQL query to insert data into the register table
-    $sql = "INSERT INTO register (username, email, password) VALUES ('$username', '$email', '$password')";
+    $sql = "INSERT INTO register (username, email, `password`) VALUES ('$username', '$email', '$password')";
     
     // // Executing the SQL query
-    if ($db_con->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
         $_SESSION['username']=$_POST['user'];
         // Redirect the user to another page (optional)

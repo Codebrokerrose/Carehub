@@ -97,7 +97,7 @@
 
                  <?php 
                    $conn = new mysqli("localhost","root","","carehub") or die(mysqli_error());
-                   $qusers = $conn->query("SELECT COUNT(user_no) AS total FROM `users`") or die(mysqli_error());
+                   $qusers = $conn->query("SELECT COUNT(user_no) AS total FROM `vendor-register`") or die(mysqli_error());
                    $fusers = $qusers->fetch_array();
                  
         

@@ -174,6 +174,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
             background: #eee;
             color: black;
         }
+        .file-caption-name{
+            display:none;
+        }
     </style>
 </head>
 <body>
@@ -198,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
                                             <input type="file" name="file" class="file" required>
                                             <input type="text" name="name" class="name form-control" placeholder="Name of product" required/>
                                             <input type="text" name="price" class="price form-control" placeholder="Enter price of service" required/>
-                                            <input type="text" name="detail" class="detail form-control" placeholder="Enter some detail about services" required/>
+                                            <textarea name="detail" class="detail form-control" placeholder="Enter some detail about services" required rows="4" cols="50"></textarea>
                                             <input type="text" name="contact" class="contact form-control" placeholder="Enter contact information" required/>
                                             <input type="hidden" name="status" value="pending" class="status form-control"/>
                                             <input class="btn login" type="submit" value="Add" />

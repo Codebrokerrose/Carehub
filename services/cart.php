@@ -60,10 +60,17 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
 
 // Handling the Place Order
 // Send the user to the place order page if they click the Place Order button, also the cart should not be empty
+
 if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-    header('Location: index.php?page=checkout');
+    if (isset($_SESSION['username'])) { 
+    header('Location: index.php?page=checkout');}
+    else{
+        header('Location: ../form/signup.php');
     exit;
+    }
 }
+
+
 
 // Get Products in Cart and Select from Database
 // Check the session variable for products in cart

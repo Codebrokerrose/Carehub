@@ -53,7 +53,7 @@
 	$password = $_POST['password'];
 		$conn = new mysqli("localhost","root","","carehub") or die(mysqli_error());
 		// Check if the vendor exists in the vendor_register table
-		$query_register = $conn->query("SELECT * FROM `vendor-register` WHERE `username` = '$username' && `password` = '$password'") or die(mysqli_error());
+		$query_register = $conn->query("SELECT * FROM `vendor-register` WHERE `name` = '$username' && `password` = '$password'") or die(mysqli_error());
 		$valid_register = $query_register->num_rows;
 
 		if($valid_register > 0) {
