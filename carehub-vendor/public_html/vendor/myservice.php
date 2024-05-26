@@ -1,46 +1,8 @@
-<?php require_once 'logincheck.php'; ?>
-<?php include './includes/config.php'; ?>
-
 <?php
-// if (isset($_REQUEST['unconfirm'])) {
-//     $aeid = intval($_GET['unconfirm']);
-//     $status = 1;
-//     $sql = "UPDATE users SET status=:status WHERE user_no=:aeid";
-//     $query = $dbh->prepare($sql);
-//     $query->bindParam(':status', $status, PDO::PARAM_INT);
-//     $query->bindParam(':aeid', $aeid, PDO::PARAM_INT);
-//     $query->execute();
-//     $msg = "Changes Successfully";
-// }
+require_once 'logincheck.php';
+include './includes/config.php';
 
-// if (isset($_REQUEST['confirm'])) {
-//     $aeid = intval($_GET['confirm']);
-//     $status = 0;
-//     $sql = "UPDATE users SET status=:status WHERE user_no=:aeid";
-//     $query = $dbh->prepare($sql);
-//     $query->bindParam(':status', $status, PDO::PARAM_INT);
-//     $query->bindParam(':aeid', $aeid, PDO::PARAM_INT);
-//     $query->execute();
-//     $msg = "Changes Successfully";
-// }
-
-if (isset($_REQUEST['delete'])) {
-    $user_no = intval($_GET['delete']); // Assuming user_no is unique
-    
-    // Delete user from register table
-    $sql = "DELETE FROM `users` WHERE `user_no` = :user_no";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':user_no', $user_no, PDO::PARAM_INT);
-    
-    if ($query->execute()) {
-        $msg = "User deleted successfully";
-    } else {
-        $error = "Error deleting user: " . $query->errorInfo()[2];
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
-    $username = $_POST['username'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'])) {
     $name = $_POST['name'];
     $price = $_POST['price'];
     $detail = $_POST['detail'];
@@ -56,20 +18,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
         $file_name = '';
     }
 
-    $sql = "INSERT INTO `ad_newservice` ( `image`, `name`, `price`, `details`, `contact_no`, `unique-id`,`status`) VALUES ( :image, :name, :price, :details, :contact,:username, :status)";
+    $sql = "INSERT INTO `ad_newservice` (`image`, `name`, `price`, `details`, `contact_no`, `status`) VALUES (:image, :name, :price, :details, :contact, :status)";
     $query = $dbh->prepare($sql);
-    $query->bindParam(':username', $username, PDO::PARAM_STR);
     $query->bindParam(':image', $file_name, PDO::PARAM_STR);
     $query->bindParam(':name', $name, PDO::PARAM_STR);
     $query->bindParam(':price', $price, PDO::PARAM_STR);
     $query->bindParam(':details', $detail, PDO::PARAM_STR);
     $query->bindParam(':contact', $contact, PDO::PARAM_STR);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
-    
+
     if ($query->execute()) {
         $msg = "Service added successfully";
     } else {
         $error = "Error adding service: " . $query->errorInfo()[2];
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
+    $edit_name = $_POST['edit_name'];
+    $edit_price = $_POST['edit_price'];
+    $edit_detail = $_POST['edit_detail'];
+    $edit_contact = $_POST['edit_contact'];
+    $existing_image = $_POST['existing_image'];
+
+    // Handle file upload for edit
+    if (isset($_FILES['edit_file']['name']) && $_FILES['edit_file']['name'] != '') {
+        $file_name = time() . '_' . $_FILES['edit_file']['name'];
+        $target = "../uploads/" . $file_name;
+        move_uploaded_file($_FILES['edit_file']['tmp_name'], $target);
+    } else {
+        $file_name = $existing_image;
+    }
+
+    $sql = "UPDATE `ad_newservice` SET `image` = :image, `price` = :price, `details` = :details, `contact_no` = :contact, `status` = 'pending' WHERE `name` = :name";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':image', $file_name, PDO::PARAM_STR);
+    $query->bindParam(':name', $edit_name, PDO::PARAM_STR);
+    $query->bindParam(':price', $edit_price, PDO::PARAM_STR);
+    $query->bindParam(':details', $edit_detail, PDO::PARAM_STR);
+    $query->bindParam(':contact', $edit_contact, PDO::PARAM_STR);
+
+    if ($query->execute()) {
+        $msg = "Service updated successfully";
+    } else {
+        $error = "Error updating service: " . $query->errorInfo()[2];
     }
 }
 ?>
@@ -89,6 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
     <link href="//fonts.googleapis.com/css?family=Federo" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style6.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
 
     <style>
@@ -139,10 +133,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
         }
         .form-control {
             margin: 1em 0;
+            border:black;
         }
         .form-control:hover, .form-control:focus {
             box-shadow: none;  
-            border-color: #fff;
+            border-color: black;
         }
         .username, .name, .price, .detail, .contact, .status {
             border: none;
@@ -177,6 +172,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
         .file-caption-name{
             display:none;
         }
+        /* file upload button */
+        input[type="file"]::file-selector-button {
+            border-radius: 4px;
+            padding: 0 16px;
+            height: 40px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+            margin-right: 16px;
+            transition: background-color 200ms;
+        }
+
+        /* file upload button hover state */
+        input[type="file"]::file-selector-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* file upload button active state */
+        input[type="file"]::file-selector-button:active {
+            background-color: #e5e7eb;
+        }
     </style>
 </head>
 <body>
@@ -188,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="page-title">My Services Status</h2>
-                        <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Add-new Service</a>
+                        <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Add-new Service</a> 
 
                         <div id="login" class="modal fade" role="dialog">
                             <div class="modal-dialog">
@@ -197,14 +214,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
                                         <button data-dismiss="modal" class="close">&times;</button>
                                         <h4>Add Service</h4>
                                         <form method="post" enctype="multipart/form-data">
-                                            <input type="text" name="username" class="username form-control" placeholder="Enter (unique) Username" required/>
-                                            <input type="file" name="file" class="file" required>
                                             <input type="text" name="name" class="name form-control" placeholder="Name of product" required/>
+                                            <input type="file" name="file" class="file" required>
+                                            
                                             <input type="text" name="price" class="price form-control" placeholder="Enter price of service" required/>
-                                            <textarea name="detail" class="detail form-control" placeholder="Enter some detail about services" required rows="4" cols="50"></textarea>
                                             <input type="text" name="contact" class="contact form-control" placeholder="Enter contact information" required/>
+                                            <textarea name="detail" class="detail form-control" placeholder="Enter some detail about services" required rows="4" cols="50"></textarea>
                                             <input type="hidden" name="status" value="pending" class="status form-control"/>
-                                            <input class="btn login" type="submit" value="Add" />
+                                            <input class="btn login" type="submit" value="Add" /> 
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="editModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button data-dismiss="modal" class="close">&times;</button>
+                                        <h4>Edit Service</h4>
+                                        <form method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="existing_image" id="existing_image">
+                                            <input type="text" name="edit_name" id="edit_name" class="name form-control" placeholder="Name of product" required/>
+                                            <input type="file" name="edit_file" class="file">
+                                            <input type="text" name="edit_price" id="edit_price" class="price form-control" placeholder="Enter price of service" required/>
+                                            <input type="text" name="edit_contact" id="edit_contact" class="contact form-control" placeholder="Enter contact information" required/>
+                                            <textarea name="edit_detail" id="edit_detail" class="detail form-control" placeholder="Enter some detail about services" required rows="4" cols="50"></textarea>
+                                            <input class="btn login" type="submit" value="Update" /> 
                                         </form>
                                     </div>
                                 </div>
@@ -228,26 +265,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
                                                 <th>Name</th>
                                                 <th>Price</th> 
                                                 <th>Details</th>
-                                                <!-- <th>Contact</th> -->
                                                 <th>Status</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $conn = new mysqli("localhost", "root", "", "carehub") or die(mysqli_error());
                                             $query = $conn->query("SELECT * FROM `ad_newservice`") or die(mysqli_error());
+                                            $count = 0;
                                             while ($row = mysqli_fetch_array($query)) {
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $row['unique-id']; ?></td>
+                                                    <td><?php echo ++$count; ?></td>
                                                     <td><img src="../uploads/<?php echo $row["image"]; ?>" style="width:50px; border-radius:50%;"/></td>
                                                     <td><?php echo $row['name']; ?></td>
                                                     <td><?php echo $row['price']; ?></td>
-                                                    <td><?php echo $row['details']; ?></td>
+                                                    <td style="text-transform:capitalize;"><?php echo $row['details']; ?></td>
+                                                    <td><?php echo $row['status']; ?></td>
                                                     <td>
-                                                        <a href="#"><?php echo $row['status']; ?></a>
-                                                        <a href="#" disabled="disabled">&nbsp;<i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                                        <a href="vendorlist.php?delete=<?php echo $row['unique-id']; ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+                                                        <a href="#" class="editService" data-name="<?php echo $row['name']; ?>" data-price="<?php echo $row['price']; ?>" data-detail="<?php echo $row['details']; ?>" data-contact="<?php echo $row['contact_no']; ?>" data-image="<?php echo $row['image']; ?>">Edit</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -262,17 +299,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
         </div>
     </div>
 </body>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.dataTables.min.js"></script>
-<script src="../js/dataTables.bootstrap.min.js"></script>
-<script src="../js/fileinput.js"></script>
-<script src="../js/chartData.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {          
+    $(document).ready(function () {
+        $('#zctb').DataTable();
+
         setTimeout(function() {
             $('.succWrap').slideUp("slow");
         }, 3000);
+
+        $('.editService').click(function() {
+            var name = $(this).data('name');
+            var price = $(this).data('price');
+            var detail = $(this).data('detail');
+            var contact = $(this).data('contact');
+            var image = $(this).data('image');
+
+            $('#edit_name').val(name);
+            $('#edit_price').val(price);
+            $('#edit_detail').val(detail);
+            $('#edit_contact').val(contact);
+            $('#existing_image').val(image);
+
+            $('#editModal').modal('show');
+        });
     });
 </script>
 <script src="../assets/js/util.js"></script>

@@ -29,8 +29,8 @@
     <div class="container">
         <div class="container__left">
             <h1>Read what our customers love about us</h1>
-            <p>Over 200 companies from diverse sectors consult us to enhance the user experience of their products and services.</p>
-            <p>We have helped companies increase their customer base and generate multifold revenue with our service.</p>
+            <p style="text-transform:capitalize;">Over 200 companies from diverse sectors consult us to enhance the user experience of their products and services.</p>
+            <p style="text-transform:capitalize;">We have helped companies increase their customer base and generate multifold revenue with our service.</p>
             <button>Read our success stories</button>
         </div>
     </div>
@@ -64,7 +64,7 @@
                 // Output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo '<div class="slider-card">';
-                    echo '<p class="text-center p-4">' . $row["comment"] . '</p> <br>
+                    echo '<p class="text-center p-4" style="text-transform:capitalize;">' . $row["comment"] . '</p> <br>
 					<h5 class="mb-0 text-center"><b>' . $row["username"] . '</b></h5>';
                                       
                     echo '</div>';

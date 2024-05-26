@@ -19,7 +19,7 @@
     </section>
     <section id="page-header" class="about-header" style="background-image: url(/carehub/img/banner/banner.png);">
         <h2>#let's_talk</h2>
-        <p>We are here to hear you</p>
+        <p style="text-transform:capitalize;">We are here to hear you</p>
     </section>
     <section id="contact-details" class="section-p1">
         <div class="details">

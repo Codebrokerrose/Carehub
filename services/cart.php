@@ -119,7 +119,7 @@ if ($products_in_cart) {
                 <tr>
                     <td class="img">
                         <a href="index.php?page=product&id=<?=$product['id']?>">
-                            <img src="uploads/<?=$product['img']?>" width="50" height="50" alt="<?=$product['title']?>">
+                            <img src="../../carehub-vendor/public_html/uploads/<?=$product['img']?>" width="50" height="50" alt="<?=$product['title']?>">
                         </a>
                     </td>
                     <td>

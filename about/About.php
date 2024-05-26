@@ -19,18 +19,18 @@
     </section>
     <section id="page-header" class="about-header" style="background-image: url(/carehub/img/about/banner.png);">
         <h2>#KnowUs</h2>
-        <p>Everything you need to know about us</p>
+        <p style="text-transform:capitalize;">Everything you need to know about us</p>
     </section>
     <section id="about-head" class="section-p1">
         <img src="/carehub/img/about/aNew.jpeg" alt="">
         <div>
-            <h2>Who Are We?</h2>
-            <p>Our objective is to enhance indoor plant care, fish care and pet care success 
+            <h2>Who Are We?</h2><br>
+            <p style="text-transform:capitalize;">Our objective is to enhance indoor plant care, fish care and pet care success 
                 and promote healthier indoor plant environments by providing accurate care 
                 instructions, personalized recommendations, and easy access to related services.
                 We aim to make plant care and other hobbies more convenient, enjoyable, and rewarding for plant enthusiasts and pet owners alike.
             </p>
-            <abbr title="">Get the best and stunning services from our team based on your looks
+            <abbr title="" style="text-transform:capitalize;">Get the best and stunning services from our team based on your looks
                 and appearences you like.
             </abbr>
             

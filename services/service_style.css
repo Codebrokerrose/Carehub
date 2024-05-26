@@ -105,7 +105,7 @@ body {
   text-align: center;
   margin-top: 40px;
   width: 100%;
-  height:30vh;
+  height:50vh;
   font-size: 13px;
   border-bottom: 1px solid rgb(224, 216, 216);
   background-color: white;
@@ -113,7 +113,7 @@ body {
 
 #productfilterbar img {
   width: 60%;
-  height: 40%;
+  height: 50%;
   border-radius: 12px;
 }
 

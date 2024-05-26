@@ -31,7 +31,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- productfilterbar -->
     <div id="container">
 
-    <div id="productfilterbar" >
+    <div id="productfilterbar" style="height:50vh; padding-top:50px;" >
 
         <div>
             <a href="#pet_home_facility"> <img
@@ -61,7 +61,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="products">
         <?php foreach ($recently_added_products as $product): ?>
         <a href="index1.php?page=product1&id=<?=$product['id']?>" class="product">
-            <img src="uploads/<?=$product['img']?>" width="200" height="200" alt="<?=$product['title']?>">
+            <img src="../../carehub-vendor/public_html/uploads/<?=$product['img']?>" width="200" height="200" alt="<?=$product['title']?>">
             <span class="name"><?=$product['title']?></span>
             <span class="price">
                 Rs : <?=$product['price']?>

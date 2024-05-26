@@ -32,6 +32,7 @@
         <h2>#let's_talk</h2>
         <p>We are here to hear you</p>
     </section>
+ 
     <section id="form-details">
         <form method="POST" action="">
             <div class="form-group row">
@@ -116,7 +117,7 @@
                     <img src="/carehub/img/cards/2.jpg" alt="Plant Image">
                 </div>
                 <div class="content">
-                    <h3>Watering Schedule</h3>
+                    <h3>Water Schedule</h3>
                     <p><?php echo $watering_timing; ?></p>
                 </div>
             </div>

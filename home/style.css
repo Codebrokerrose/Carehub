@@ -11,6 +11,10 @@
     text-decoration: none;
     /* text-transform: uppercase; */
 }
+p>b{
+    text-transform:uppercase;
+}
+
 
 
 html{

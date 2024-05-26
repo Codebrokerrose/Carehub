@@ -37,14 +37,17 @@ if (isset($_GET['delete'])) {
 
 // Handle move data action
 if (isset($_POST['move_data'])) {
-    $unique_id = $_POST['unique_id'];
+    $name = $_POST['name'];
 
     // Retrieve data from ad_newservice table based on unique ID
-    $sql_select = "SELECT * FROM `ad_newservice` WHERE `unique-id` = '$unique_id'";
-    $result = mysqli_query($conn, $sql_select);
+    $sql_select = "SELECT * FROM `ad_newservice` WHERE `name` = ?";
+    $stmt_select = $conn->prepare($sql_select);
+    $stmt_select->bind_param('s', $name);
+    $stmt_select->execute();
+    $result = $stmt_select->get_result();
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
 
         // Insert data into products table only if the description is unique
         $name = $row['name'];
@@ -56,21 +59,26 @@ if (isset($_POST['move_data'])) {
         $date = date("Y-m-d H:i:s");
 
         // Check if description already exists
-        $sql_check = "SELECT * FROM `category` WHERE `description` = '$details'";
-        $result_check = mysqli_query($conn1, $sql_check);
+        $sql_check = "SELECT * FROM `category` WHERE `description` = ?";
+        $stmt_check = $conn1->prepare($sql_check);
+        $stmt_check->bind_param('s', $details);
+        $stmt_check->execute();
+        $result_check = $stmt_check->get_result();
 
-        if (mysqli_num_rows($result_check) == 0) {
-            $sql_insert = "INSERT INTO `category` (`id`,`title`, `description`, `price`, `rrp`, `quantity`, `img`, `date_added`) 
-                           VALUES ('','$name', '$details', '$price', '$rrp', '$quantity', '$img', '$date')";
-            $stmt_insert = mysqli_query($conn1, $sql_insert);
+        if ($result_check->num_rows == 0) {
+            $sql_insert = "INSERT INTO `category` (`id`, `title`, `description`, `price`, `rrp`, `quantity`, `img`, `date_added`) 
+                           VALUES ('', ?, ?, ?, ?, ?, ?, ?)";
+            $stmt_insert = $conn1->prepare($sql_insert);
+            $stmt_insert->bind_param('ssddiss', $name, $details, $price, $rrp, $quantity, $img, $date);
 
-            if ($stmt_insert) {
+            if ($stmt_insert->execute()) {
                 $msg = "Data moved successfully";
 
                 // Update status in ad_newservice table
-                $update = "UPDATE ad_newservice SET status = 'active' WHERE `unique-id` = '$unique_id'";
-                $stmt_update = mysqli_query($conn, $update);
-                if ($stmt_update) {
+                $update = "UPDATE ad_newservice SET status = 'active' WHERE `name` = ?";
+                $stmt_update = $conn->prepare($update);
+                $stmt_update->bind_param('s', $name);
+                if ($stmt_update->execute()) {
                     $msg = "Status updated successfully";
                 } else {
                     $error = "Error updating status: " . $conn->error;
@@ -82,7 +90,7 @@ if (isset($_POST['move_data'])) {
             $error = "Duplicate description: $details";
         }
     } else {
-        $error = "No data found with ID: $unique_id";
+        $error = "No data found with name: $name";
     }
 }
 ?>
@@ -155,25 +163,27 @@ if (isset($_POST['move_data'])) {
                                         <tbody>
                                             <?php
                                             $query = $conn->query("SELECT * FROM `ad_newservice`") or die(mysqli_error($conn));
-                                            while ($row = mysqli_fetch_array($query)) {
+                                            $count = 0;
+                                            while ($row = $query->fetch_assoc()) {
+                                                $count++;
                                             ?>
                                                 <tr>
-                                                    <td><?php echo $row['unique-id']; ?></td>
-                                                    <td><img src="../../../carehub/services/uploads/<?php echo $row["image"]; ?>" style="width:50px; border-radius:50%;"/></td>
-                                                    <td><?php echo $row['name']; ?></td>
-                                                    <td><?php echo $row['price']; ?></td>
-                                                    <td><?php echo $row['details']; ?></td>
-                                                    <td><?php echo $row['status']; ?></td>
+                                                    <td><?php echo $count; ?></td>
+                                                    <td><img src="../../../carehub-vendor/public_html/uploads/<?php echo htmlspecialchars($row["image"]); ?>" style="width:50px; border-radius:50%;"/></td>
+                                                    <td><?php echo htmlspecialchars($row['name']); ?></td>
+                                                    <td><?php echo htmlspecialchars($row['price']); ?></td>
+                                                    <td style="text-transform:capitalize;"><?php echo htmlspecialchars($row['details']); ?></td>
+                                                    <td><?php echo htmlspecialchars($row['status']); ?></td>
                                                     <td>
                                                         <form action="" method="post">
-                                                            <input type="hidden" name="unique_id" value="<?php echo $row['unique-id']; ?>">
+                                                            <input type="hidden" name="name" value="<?php echo htmlspecialchars($row['name']); ?>">
                                                             <button type="submit" name="move_data" style="border: none; background-color: transparent;">
                                                                 <i class="fa fa-pencil"></i>
                                                             </button>
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <a href="newservice.php?delete=<?php echo $row['name']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
+                                                        <a href="newservice.php?delete=<?php echo htmlspecialchars($row['name']); ?>" onclick="return confirm('Are you sure you want to delete this item?');">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
                                                     </td>

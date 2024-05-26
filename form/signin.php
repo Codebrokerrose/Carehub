@@ -70,7 +70,7 @@ if(isset($_POST['sub']) && ($_POST['sub'] == 'Login')){
         $p = $conn->query($log);
         if($p && $p->num_rows > 0){
             // SQL query to insert data into the login table
-            $sql = "INSERT INTO `login` (username, password) VALUES ('$username', '$password')";
+            $sql = "INSERT INTO `login` (`username`, `password`) VALUES ('$username', '$password')";
             if ($conn->query($sql) === TRUE) {
                 $_SESSION['username'] = $username;
                 header("Location: /carehub/home/index.php"); // Redirect to the homepage or any other page
@@ -80,7 +80,7 @@ if(isset($_POST['sub']) && ($_POST['sub'] == 'Login')){
             }
         } else {
             echo "<script>alert('Invalid username or password')</script>";
-            echo "<script>window.location = 'index.php'</script>";
+            echo "<script>window.location = '../home/index.php'</script>";
         }
     }
     $conn->close();

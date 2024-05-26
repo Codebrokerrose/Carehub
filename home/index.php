@@ -11,10 +11,7 @@
     <script src="https://kit.fontawesome.com/f75e97ac39.js" crossorigin="anonymous"></script> <!-- imports the Font Awesome JavaScript kit from its CDN, enabling dynamic loading of Font Awesome icons.-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--This links to another external CSS file hosted on the Font Awesome CDN, providing access to Font Awesome version 6.1.1 icons. The integrity attribute ensures that the file has not been tampered with, and the crossorigin attribute specifies how to handle requests from different origins.-->
   </head>
-  <style>
-      /* Image Gallery styling */
 
-  </style>
 <body>
     <section id="Home">
     
@@ -107,7 +104,7 @@
   <div class="image-gallery">
     <div class="image-gallery-text">
       <h2>How to take care of you pets!</h2>
-      <p>
+      <p style="text-transform:capitalize;">
         <b>Proper Nutrition:</b> Provide your pet with a balanced and nutritious diet suitable for their species, age,
         and size. Ensure access to fresh water at all times.<br><br>
         <b>Regular Exercise:</b> Dogs, cats, and other active pets need regular exercise to stay healthy. Playtime,
@@ -119,7 +116,7 @@
         
       </p>
 
-      <button class="button">Explore More</button>
+      <button class="button "><a href="../services/index1.php?page=products1">Explore More</a></button>
     </div>
 
 

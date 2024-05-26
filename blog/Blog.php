@@ -19,7 +19,7 @@
     </section>
     <section id="page-header" class="blog-header" style="background-image: url(/carehub/img/banner/b19.jpg);">
         <h2>#Readmore</h2>
-        <p>All The New Fashion Blogs</p>
+        <p style="text-transform:capitalize;">All The New Fashion Blogs</p>
     </section>
     <section id="blog">
         <div class="blog-box">
@@ -28,10 +28,10 @@
             </div>
             <div class="blog-details">
                 <h4>Ready to Adopt a Pet</h4>
-                <p>There are so many reasons to adopt: meeting a unique pet, spending less, doing a good deed—but let’s talk facts. Millions of pets enter shelters every year. And hundreds of thousands are euthanized each year. We don’t tell you that to guilt you or be a downer, but that’s why adoption really matters to us. So we would love it if you considered adopting. </p>
+                <p style="text-transform:capitalize;">There are so many reasons to adopt: meeting a unique pet, spending less, doing a good deed—but let’s talk facts. Millions of pets enter shelters every year. And hundreds of thousands are euthanized each year. We don’t tell you that to guilt you or be a downer, but that’s why adoption really matters to us. So we would love it if you considered adopting. </p>
                 <a href="https://www.adoptapet.com/"> CONTINUE READING</a>
             </div>
-            <h1>03/04</h1>
+            <h1 style="z-index:20; color:gray;">03/04</h1>
         </div>
         <div class="blog-box">
             <div class="blog-img">
@@ -39,12 +39,12 @@
             </div>
             <div class="blog-details">
                 <h4>Get to know us</h4>
-                <p>We know pet adoption, because we're adopters too. We think it's just about the best thing you can do. But we'll be real: it can be a lengthy (paperwork-filled) process.
+                <p style="text-transform:capitalize;">We know pet adoption, because we're adopters too. We think it's just about the best thing you can do. But we'll be real: it can be a lengthy (paperwork-filled) process.
 
                     So we're making it easier, with the tools, advice, and transparency you need—from the first search through to daily life as a pet parent.</p>
                 <a href="https://www.adoptapet.com/using-our-site"> CONTINUE READING</a>
             </div>
-            <h1>13/02</h1>
+            <h1 style="z-index:20; color:gray;">13/02</h1>
         </div>
         <div class="blog-box">
             <div class="blog-img">
@@ -52,10 +52,10 @@
             </div>
             <div class="blog-details">
                 <h4>PET CARE CAREERS</h4>
-                <p>Every person, pet and perspective is welcome at Kinship.Along with eating all the office snacks and sharing all the cat videos in Slack, of course.</p>
+                <p style="text-transform:capitalize;">Every person, pet and perspective is welcome at Kinship.Along with eating all the office snacks and sharing all the cat videos in Slack, of course.</p>
                 <a href="https://kinship.co/careers"> CONTINUE READING</a>
             </div>
-            <h1>13/03</h1>
+            <h1 style="z-index:20; color:gray;">13/03</h1>
         </div>
         <div class="blog-box">
             <div class="blog-img">
@@ -63,10 +63,10 @@
             </div>
             <div class="blog-details">
                 <h4>Freedom of Real Life</h4>
-                <p>Every person, pet, and perspective is welcome at Kinship. And we’re committed to building a more caring, inclusive world.</p>
+                <p style="text-transform:capitalize;">Every person, pet, and perspective is welcome at Kinship. And we’re committed to building a more caring, inclusive world.</p>
                 <a href="#"> CONTINUE READING</a>
             </div>
-            <h1>13/04</h1>
+            <h1 style="z-index:20; color:gray;">13/04</h1>
         </div>
         <div class="blog-box">
             <div class="blog-img">
@@ -74,10 +74,10 @@
             </div>
             <div class="blog-details">
                 <h4>10 TOP GARDENING TIPS FOR BEGINNERS</h4>
-                <p>Misjudging sunlight is a common pitfall when you're first learning to garden. Pay attention to how sunlight plays through your yard before choosing a spot for your garden. Most edible plants, including many vegetables, herbs, and fruits, need at least 6 hours of sun in order to thrive.</p>
+                <p style="text-transform:capitalize;">Misjudging sunlight is a common pitfall when you're first learning to garden. Pay attention to how sunlight plays through your yard before choosing a spot for your garden. Most edible plants, including many vegetables, herbs, and fruits, need at least 6 hours of sun in order to thrive.</p>
                 <a href="https://miraclegro.com/en-us/gardening-101/10-top-gardening-tips-for-beginners.html"> CONTINUE READING</a>
             </div>
-            <h1>13/05</h1>
+            <h1 style="z-index:20; color:gray;">13/05</h1>
         </div>
     </section>
     <section id="pagination" class="section-p1">

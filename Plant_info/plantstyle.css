@@ -116,6 +116,9 @@ button.normal{/*globall stylling for buttoms*/
     justify-content : center;
     flex-wrap : warp;
     padding : 30px;  
+    margin-top:50px;
+    margin-bottom: 50px;
+    
   }
   
   .container .card {

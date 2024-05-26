@@ -73,10 +73,10 @@ require_once 'logincheck.php';
                         ?>
                         <tr>
                           <td><?php echo $count++; ?></td>
-                          <td><img src="../../../carehub/services/uploads/<?php echo $row['img']; ?>" width="100" height="100" alt="<?php echo $row['img']; ?>"></td>
+                          <td><img src="../../../carehub-vendor/public_html/uploads/<?php echo $row['img']; ?>" width="100" height="100" alt="<?php echo $row['img']; ?>"></td>
                           <td><?php echo $row['title']; ?></td>
-                          <td><?php echo $row['description']; ?></td>
-                          <td><?php echo $row['price']; ?></td>
+                          <td style="text-transform:capitalize;"><?php echo $row['description']; ?></td>
+                          <td ><?php echo $row['price']; ?></td>
                           <td><?php echo $row['date_added']; ?></td>
                         </tr>
                       <?php } ?>

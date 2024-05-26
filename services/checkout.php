@@ -300,11 +300,11 @@ h2 {
                     <tr>
                         <td class="img">
                             <a href="index.php?page=product&id=<?=$product['id']?>">
-                                <img src="uploads/<?=$product['img']?>" width="50" height="50" alt="<?=$product['title']?>">
+                                <img src="../../carehub-vendor/public_html/uploads/<?=$product['img']?>" width="50" height="50" alt="<?=$product['title']?>">
                             </a>
                         </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>
-                            <a href="index.php?page=product&id=<?=$product['id']?>" style="font-weight:bold; text-transform:uppercase; position:absolute;"><?=$product['title']?></a>
+                            <a href="index.php?page=product&id=<?=$product['id']?>" style="font-weight:bold; text-transform:uppercase; position:absolute; padding-right:50px; "><?=$product['title']?></a>
                             <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
                         </td>
                     </tr>

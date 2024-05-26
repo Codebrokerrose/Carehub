@@ -21,10 +21,15 @@ if (isset($_GET['id'])) {
 
 <!-- Create Product Template -->
 <?=template_header('Product')?>
-
+<style>
+    .side-p{
+        margin-left:50px;
+        padding-right:100px;
+    }
+</style>
 <div class="product content-wrapper">
-    <img src="uploads/<?=$product['img']?>" width="500" height="500" alt="<?=$product['title']?>">
-    <div>
+    <img src="../../carehub-vendor/public_html/uploads/<?=$product['img']?>" width="500" height="500" alt="<?=$product['title']?>">
+    <div class="side-p">
         <h1 class="name"><?=$product['title']?></h1>
         <span class="price">
             Rs : <?=$product['price']?>
@@ -37,7 +42,7 @@ if (isset($_GET['id'])) {
             <input type="hidden" name="product_id" value="<?=$product['id']?>">
             <input type="submit" value="Add To Cart">
         </form>
-        <div class="description">
+        <div class="description" style="text-transform:capitalize;">
             <?=$product['description']?>
         </div>
     </div>
