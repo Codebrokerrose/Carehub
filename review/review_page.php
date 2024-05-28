@@ -17,8 +17,27 @@
    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body>
 
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .container__left {
+        flex: 1;
+    }
+
+    .right-corner-image {
+    width: 500px; /* Adjust this value to increase the width */
+    height: 350px; /* Adjust this value to increase the height */
+}
+
+
+</style>
+<body>
 <!-- header section starts -->
 <section id="header">
 <?php include 'C:\xampp\htdocs\carehub\home\nav.php'; ?>
@@ -29,16 +48,19 @@
     <div class="container">
         <div class="container__left">
             <h1>Read what our customers love about us</h1>
-            <p style="text-transform:capitalize;">Over 200 companies from diverse sectors consult us to enhance the user experience of their products and services.</p>
-            <p style="text-transform:capitalize;">We have helped companies increase their customer base and generate multifold revenue with our service.</p>
+            <p style="text-transform:capitalize; font-weight:bold;">Over 200 companies from diverse sectors consult us to enhance the user experience of their products and services.</p>
+            <p style="text-transform:capitalize; font-weight:bold;">We have helped companies increase their customer base and generate multifold revenue with our service.</p>
             <button>Read our success stories</button>
+        </div> 
+        <div>
+            <img src="review.png" alt="Review Image" class="right-corner-image">
         </div>
     </div>
 </header>
 
 <section id="slider" class="pt-5" style="margin-top:100px;">
   <div class="container2">
-    <h1  >Some of the Feedbacks</h1>
+    <h1 style="font-weight:bold; text-align:center;" >Some of the Feedbacks</h1><br>
 	  <div class="slider">
 				<div class="owl-carousel">
 				<?php

@@ -15,9 +15,69 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	
 </head>
+<style>
+header{
+    padding-top:10px;
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0; /* Remove any padding if present */
+    margin: 0; /* Remove any margin if present */
+}
+
+.logo {
+    margin-left: 5%; /* Ensure the logo is at the very left */
+}
+
+.logo img {
+    width: 90px;
+    height: 65px;
+    border-radius: 100%;
+}
+
+#branding {
+    margin-left: 10px; /* Adjust this value to move the text closer or further from the logo */
+}
+#branding h1 {
+    margin: 0;
+}
+.back .Btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.back{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+
+
+.Btn:hover{
+    background: rgba(255,255,255,0.3);
+}
+.Btn.Btn.white-btn:hover{
+    background: rgba(255,255,255,0.5);
+}
+.Btn>a{
+    color:black;
+}
+
+</style>
 <body style="background-image:url('background.png'); background-repeat:no-repeat; background-size:cover;">
 	<header style="background: gray; color:white;">
     	<div class="container">
+		<div class="logo">
+            <img src="/carehub/logo_carehub.jpeg" alt="Logo">
+        </div>
     		<div id="branding">
     			<h1> 
                 <span class="highlight" style="color:#9cf;">VENDOR</span> |
@@ -43,6 +103,9 @@
 	</form>
 </div>
 </div>
+<div class="back">
+        <button class="Btn "><a href="/carehub/home/index.php"><- Go back </a>  </button>
+    </div>
 </body>
 </html>
 <?php
@@ -71,6 +134,6 @@
 			echo "<script>alert('Invalid username or password')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 		}
-		$conn->close();
+		$conn->close(); 
 	}
 ?>

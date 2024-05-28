@@ -272,6 +272,7 @@ button.normal{/*globall stylling for buttoms*/
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 .section-m1{
     margin: 40px 0;

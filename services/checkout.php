@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Proceed with the rest of the checkout process
   $_SESSION['checkout_complete'] = true;
-  header('Location: index.php?page=book');
+  header('Location: index.php?page=placeorder');
   exit;
 }
 ?>

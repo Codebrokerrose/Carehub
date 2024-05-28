@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_product'])) {
 }
 
 // Clear the session variables related to the cart
-unset($_SESSION['cart']);
+// unset($_SESSION['cart']);
 // Keep $_SESSION['removed_products'] to persist the product details
 // Keep $_SESSION['checkout_complete'] to track checkout completion
 ?>

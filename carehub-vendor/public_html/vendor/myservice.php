@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
         $file_name = $existing_image;
     }
 
-    $sql = "UPDATE `ad_newservice` SET `image` = :image, `price` = :price, `details` = :details, `contact_no` = :contact, `status` = 'pending' WHERE `name` = :name";
+    $sql = "UPDATE `ad_newservice` SET `image` = :image, `price` = :price, `details` = :details, `contact_no` = :contact WHERE `name` = :name";
     $query = $dbh->prepare($sql);
     $query->bindParam(':image', $file_name, PDO::PARAM_STR);
     $query->bindParam(':name', $edit_name, PDO::PARAM_STR);
@@ -59,7 +59,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
     $query->bindParam(':contact', $edit_contact, PDO::PARAM_STR);
 
     if ($query->execute()) {
-        $msg = "Service updated successfully";
+        $sql2 = "UPDATE `category` SET `price` = :price, `description` = :details, `date_added` = CURDATE() WHERE `title` = :name";
+        $query2 = $dbh->prepare($sql2);
+        $query2->bindParam(':price', $edit_price, PDO::PARAM_STR);
+        $query2->bindParam(':details', $edit_detail, PDO::PARAM_STR);
+        $query2->bindParam(':name', $edit_name, PDO::PARAM_STR);
+
+        if ($query2->execute()) {
+            $msg = "Service updated successfully";
+        } else {
+            $error = "Error updating service in category: " . $query2->errorInfo()[2];
+        }
     } else {
         $error = "Error updating service: " . $query->errorInfo()[2];
     }
@@ -137,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
         }
         .form-control:hover, .form-control:focus {
             box-shadow: none;  
-            border-color: black;
+            /* border-color: black; */
         }
         .username, .name, .price, .detail, .contact, .status {
             border: none;
@@ -171,6 +181,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
         }
         .file-caption-name{
             display:none;
+        }
+        #preview img {
+            max-width: 100%;
+            height: 150px;
+            margin-bottom:20px;
         }
         /* file upload button */
         input[type="file"]::file-selector-button {
@@ -215,7 +230,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
                                         <h4>Add Service</h4>
                                         <form method="post" enctype="multipart/form-data">
                                             <input type="text" name="name" class="name form-control" placeholder="Name of product" required/>
-                                            <input type="file" name="file" class="file" required>
+                                            <div id="preview"></div>
+                                            <input type="file" name="file" class="file-control file"  id="upload_file" onchange="getImagePreview(event)" required>
                                             
                                             <input type="text" name="price" class="price form-control" placeholder="Enter price of service" required/>
                                             <input type="text" name="contact" class="contact form-control" placeholder="Enter contact information" required/>
@@ -327,4 +343,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../js/main1.js"></script>
+<script>
+        function getImagePreview(event) {
+            var image = URL.createObjectURL(event.target.files[0]);
+            var imagediv = document.getElementById('preview');
+            var newimg = document.createElement('img');
+            imagediv.innerHTML = '';
+            newimg.src = image;
+            newimg.width = 300; // Correctly set the width as an integer
+            imagediv.appendChild(newimg);
+        }
+    </script>
 </html>

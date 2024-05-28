@@ -21,7 +21,7 @@
         <h2>#KnowUs</h2>
         <p style="text-transform:capitalize;">Everything you need to know about us</p>
     </section>
-    <section id="about-head" class="section-p1">
+    <section id="about-head" class="section-p1" style="padding-top: 100px;">
         <img src="/carehub/img/about/aNew.jpeg" alt="">
         <div>
             <h2>Who Are We?</h2><br>

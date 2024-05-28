@@ -150,15 +150,73 @@ if (isset($_POST['signin'])) {
                 margin-bottom: 6px;
             }
         }
-        #branding{
-            padding-left:100px;
+#branding{
+            padding-left:10px;
             padding-bottom:20px;
-        }
+ }
+.div1{
+    width:80%;
+    margin:auto;
+    overflow:hidden;
+     }
+header .div1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0; /* Remove any padding if present */
+    margin: 0; /* Remove any margin if present */
+}
+
+.logo {
+    margin-left: 5%; /* Ensure the logo is at the very left */
+    margin-bottom:1%;
+}
+
+.logo img {
+    width: 90px;
+    height: 65px;
+    border-radius: 100%;
+}
+
+
+
+.back .Btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.back{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+header{
+    padding-top:10px;
+}
+
+.Btn:hover{
+    background: rgba(255,255,255,0.3);
+}
+.Btn.Btn.white-btn:hover{
+    background: rgba(255,255,255,0.5);
+}
+.Btn>a{
+    color:black;
+}
     </style>
 </head>
 <body>
     <header style="background: gray; color:white;">
-        <div>
+        <div class="div1">
+        <div class="logo">
+            <img src="/carehub/logo_carehub.jpeg" alt="Logo">
+        </div>
             <div id="branding">
                 <h1> 
                     <span class="highlight" style="color:#9cf;">VENDOR</span> | CAREHUB
@@ -166,7 +224,7 @@ if (isset($_POST['signin'])) {
             </div>
         </div>
     </header>
-    <br><br><br>
+    <br><br>
     <div class="container">
         <div class="clsDiv">
             <h2 style="text-align:center;"><font color="white">Vendor</font></h2>
@@ -199,6 +257,8 @@ if (isset($_POST['signin'])) {
             </form>
         </div>
     </div>
-    <br><br><br>
+    <div class="back">
+        <button class="Btn "><a href="/carehub/home/index.php"><- Go back </a>  </button>
+    </div><br>
 </body>
 </html>

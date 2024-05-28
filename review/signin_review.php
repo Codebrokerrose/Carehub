@@ -68,28 +68,37 @@
 </body>
 </html>
 <?php
-if(isset($_POST['sub'])&& ($_POST['sub']=='Login')){
-
+if(isset($_POST['sub']) && ($_POST['sub'] == 'Login')){
 $log="select * from `register` where `username`='".$_POST['user']."' and `password`='".$_POST['pass']."'";
-$p=mysqli_query($db_con,$log);
+ $p=mysqli_query($db_con,$log);
 if($p && mysqli_num_rows($p)>0){
-        // Fetching form data
-        $username = $_POST['user'];
-        $password = $_POST['pass']; // Note: In a real-world scenario, you should encrypt the password before storing it in the database
+ // Fetching form data
+$username = $_POST['user'];
+$password = $_POST['pass']; // Note: In a real-world scenario, you should encrypt the password before storing it in the database
+// SQL query to insert data into the login table
+$log1 = "SELECT * FROM `login` WHERE `username`='$username' AND `password`='$password'";
+ $p1 = mysqli_query($db_con,$log1);
+        if($p1 && $p1->num_rows > 0){
+            $_SESSION['username'] = $username;
+            header("Location: /carehub/review/review_form.php"); // Redirect to the homepage or any other page
+            exit();
+        }else{
+            $sql = "INSERT INTO `login` (`username`, `password`) VALUES ('$username', '$password')";
+            if ($conn->query($sql) === TRUE) {
+                $_SESSION['username'] = $username;
+                header("Location: /carehub/review/review_form.php"); // Redirect to the homepage or any other page
+                exit();
+            } else {
+                echo "<script>alert('Error logging in. Please try again.')</script>";
+            }
+        }
+        } else {
+            echo "<script>alert('Invalid username or password')</script>";
+            echo "<script>window.location = 'review_page.php'</script>";
+        }
     
-        // SQL query to insert data into the login table
-        $sql = "INSERT INTO `login` (username,  password) VALUES ('$username', '$password')";
-        $db_con->query($sql);
-        // // Executing the SQL query
-        if ($db_con->query($sql) === TRUE) {  
-            echo "New record created successfully";
-        } 
-        $_SESSION['username']=$_POST['user'];
-        // Redirect the user to another page (optional)
-        header("Location: /carehub/review/review_form.php"); // Redirect to the homepage or any other page
-        exit();
+    $conn->close();
 }
 
-}
 ?>
 </table>
