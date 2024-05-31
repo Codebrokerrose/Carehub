@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_product'])) {
         padding-top: 20px;
         margin: 0;
         margin-left: 50px;
+        margin-right: 30px;
         width: auto;
     }
 
@@ -84,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_product'])) {
         border-radius: 12px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         padding: 10px;
-        background-color: #1A48F1;
+        background-color: #020644;
     }
 
     .table th {
@@ -119,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_product'])) {
     }
 
     .table tbody tr:nth-child(even) {
-        background: #1A48F1;
+        background: #020644;
     }
 
     .table__wrapper {
@@ -154,17 +155,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_product'])) {
                         <td>Rs : <?= $product['total'] ?></td>
                         <td><?= $product['date'] ?></td>
                         <td>
-                            <form method="post" action="">
-                                <input type="hidden" name="product_title" value="<?= $product['title'] ?>">
-                                <input type="submit" name="cancel_product" value="Cancel" class="btn btn-danger">
-                            </form>
+                        <form method="post" action="" onsubmit="return confirmCancel()">
+                             <input type="hidden" name="product_title" value="<?= $product['title'] ?>">
+                            <input type="submit" name="cancel_product" value="Cancel" class="btn btn-danger">
+                        </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
         </tbody>
     </table>
-    <div>Services will be provided within 24 hours.</div>
+    <div style="margin-left:70px;">Services will be provided within 24 hours.</div>
 </div>
 
 <?= template_footer() ?>
+<script>
+function confirmCancel() {
+    return confirm('Are you sure you want to cancel?');
+}
+</script>

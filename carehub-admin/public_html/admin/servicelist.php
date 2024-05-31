@@ -1,6 +1,39 @@
-<?php 
+<?php
 require_once 'logincheck.php';
 
+// Establish database connections
+$conn = new mysqli("localhost", "root", "", "carehub");
+$conn1 = new mysqli("localhost", "root", "", "carehub");
+
+// Check connections
+if ($conn->connect_error || $conn1->connect_error) {
+    die("Connection failed: " . $conn->connect_error . " and " . $conn1->connect_error);
+}
+
+// Initialize error and success messages
+$error = '';
+$msg = '';
+
+// Handle delete action
+if (isset($_GET['delete'])) {
+    $name = $_GET['delete']; // Assuming name is unique
+    
+    // Delete user from products table
+    $sql = "DELETE FROM `category` WHERE `title` = ?";
+    $query = $conn1->prepare($sql);
+    $query->bind_param('s', $name);
+    
+    // Delete user from ad_newservice table
+    $sql1 = "DELETE FROM `ad_newservice` WHERE `name` = ?";
+    $query1 = $conn->prepare($sql1);
+    $query1->bind_param('s', $name);
+    
+    if ($query->execute() && $query1->execute()) {
+        $msg = "User deleted successfully";
+    } else {
+        $error = "Error deleting user: " . $conn->error;
+    }
+}
 
 ?>
 
@@ -62,6 +95,7 @@ require_once 'logincheck.php';
                         <th>Description</th>
                         <th>Price</th>
                         <th>Date Added</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -78,6 +112,11 @@ require_once 'logincheck.php';
                           <td style="text-transform:capitalize;"><?php echo $row['description']; ?></td>
                           <td ><?php echo $row['price']; ?></td>
                           <td><?php echo $row['date_added']; ?></td>
+                          <td style="text-align:center;">
+                                                        <a href="servicelist.php?delete=<?php echo htmlspecialchars($row['title']); ?>" onclick="return confirm('Are you sure you want to delete this item?');">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </td>
                         </tr>
                       <?php } ?>
                     </tbody>
@@ -97,7 +136,11 @@ require_once 'logincheck.php';
 <script src="../js/dataTables.bootstrap.min.js"></script>
 <script src="../js/fileinput.js"></script>
 <script src="../js/chartData.js"></script>
-
+<script>
+        $(document).ready(function() {
+            $('#zctb').DataTable();
+        });
+    </script>
 <script type="text/javascript">
   $(document).ready(function () {          
     setTimeout(function() {

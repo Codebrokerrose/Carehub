@@ -90,6 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Proceed with the rest of the checkout process
   $_SESSION['checkout_complete'] = true;
+  // Clear the session variables related to the cart
+unset($_SESSION['cart']);
   header('Location: index.php?page=placeorder');
   exit;
 }

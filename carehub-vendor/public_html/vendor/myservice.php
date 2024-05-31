@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>USERLIST</title>
+<title>NEWSERVICE-LIST</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <link rel="shortcut icon" href="../uploads/cicon.png" />
@@ -244,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
                             </div>
                         </div>
 
-                        <div id="editModal" class="modal fade" role="dialog">
+                        <div id="editModal"  class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-body">
@@ -283,6 +283,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
                                                 <th>Details</th>
                                                 <th>Status</th>
                                                 <th>Edit</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -316,29 +317,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
     </div>
 </body>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#zctb').DataTable();
+   $(document).ready(function () {
+    $('#zctb').DataTable();
 
-        setTimeout(function() {
-            $('.succWrap').slideUp("slow");
-        }, 3000);
+    setTimeout(function() {
+        $('.succWrap').slideUp("slow");
+    }, 3000);
 
-        $('.editService').click(function() {
-            var name = $(this).data('name');
-            var price = $(this).data('price');
-            var detail = $(this).data('detail');
-            var contact = $(this).data('contact');
-            var image = $(this).data('image');
+    $(document).on('click', '.editService', function() {
+        var name = $(this).data('name');
+        var price = $(this).data('price');
+        var detail = $(this).data('detail');
+        var contact = $(this).data('contact');
+        var image = $(this).data('image');
 
-            $('#edit_name').val(name);
-            $('#edit_price').val(price);
-            $('#edit_detail').val(detail);
-            $('#edit_contact').val(contact);
-            $('#existing_image').val(image);
+        // Populate the edit form fields with data from the clicked row
+        $('#editModal').find('#edit_name').val(name);
+        $('#editModal').find('#edit_price').val(price);
+        $('#editModal').find('#edit_detail').val(detail);
+        $('#editModal').find('#edit_contact').val(contact);
+        $('#editModal').find('#existing_image').val(image);
 
-            $('#editModal').modal('show');
-        });
+        $('#editModal').modal('show'); // Show the edit modal
     });
+});
+
 </script>
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>

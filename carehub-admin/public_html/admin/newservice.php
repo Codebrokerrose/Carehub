@@ -27,8 +27,9 @@ if (isset($_GET['delete'])) {
     $sql1 = "DELETE FROM `ad_newservice` WHERE `name` = ?";
     $query1 = $conn->prepare($sql1);
     $query1->bind_param('s', $name);
+    $query1->execute() ;
     
-    if ($query->execute() && $query1->execute()) {
+    if ( $query->execute()) {
         $msg = "User deleted successfully";
     } else {
         $error = "Error deleting user: " . $conn->error;
@@ -97,7 +98,7 @@ if (isset($_POST['move_data'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>USERLIST</title>
+    <title>NEWSERVICE-LIST</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <link rel="shortcut icon" href="../uploads/cicon.png" />
@@ -174,7 +175,7 @@ if (isset($_POST['move_data'])) {
                                                     <td><?php echo htmlspecialchars($row['price']); ?></td>
                                                     <td style="text-transform:capitalize;"><?php echo htmlspecialchars($row['details']); ?></td>
                                                     <td><?php echo htmlspecialchars($row['status']); ?></td>
-                                                    <td>
+                                                    <td style="text-align:center;">
                                                         <form action="" method="post">
                                                             <input type="hidden" name="name" value="<?php echo htmlspecialchars($row['name']); ?>">
                                                             <button type="submit" name="move_data" style="border: none; background-color: transparent;">
@@ -182,7 +183,7 @@ if (isset($_POST['move_data'])) {
                                                             </button>
                                                         </form>
                                                     </td>
-                                                    <td>
+                                                    <td style="text-align:center;">
                                                         <a href="newservice.php?delete=<?php echo htmlspecialchars($row['name']); ?>" onclick="return confirm('Are you sure you want to delete this item?');">
                                                             <i class="fa fa-trash"></i>
                                                         </a>
