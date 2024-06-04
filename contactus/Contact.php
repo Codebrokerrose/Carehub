@@ -76,7 +76,7 @@
             </div>
             <div>
                 <img src="/carehub/usericon.png" alt="">
-                <p><span>Raunak Kanji</span>Ceo <br>Phone: +91 81000XXXXX
+                <p><span>Ankana Saha</span>Ceo <br>Phone: +91 81000XXXXX
                     <br>E-mail:contact@abcd.com
                 </p>
             </div>

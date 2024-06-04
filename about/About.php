@@ -21,7 +21,7 @@
         <h2>#KnowUs</h2>
         <p style="text-transform:capitalize;">Everything you need to know about us</p>
     </section>
-    <section id="about-head" class="section-p1" style="padding-top: 100px;">
+    <section id="about-head" class="section-p1" style="padding-top: 170px;">
         <img src="/carehub/img/about/aNew.jpeg" alt="">
         <div>
             <h2>Who Are We?</h2><br>
@@ -41,7 +41,7 @@
                 and appearences you like.</marquee>
         </div>
     </section>
-    <section id="feature" class="section-p1">
+    <section id="feature" class="section-p1" style="padding-top:200px;">
         <div class="fe-box">
             <img src="/carehub/img/features/f2.png" alt="">
             <h6>Order Online</h6>

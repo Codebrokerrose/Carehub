@@ -17,7 +17,7 @@
         <!-- navigation -->
         <?php include 'C:\xampp\htdocs\carehub\home\nav.php'; ?>
     </section>
-    <section id="page-header" class="blog-header" style="background-image: url(/carehub/img/banner/b19.jpg);">
+    <section id="page-header" class="blog-header" style="background-image: url(/carehub/img/banner/b19.jpg); height: 70vh;">
         <h2>#Readmore</h2>
         <p style="text-transform:capitalize;">All The New Fashion Blogs</p>
     </section>

@@ -42,7 +42,7 @@ echo <<<EOT
             <div class="content-wrapper">
             <img class="logo" src="logo_carehub.jpeg" alt="logo">
                 <h1>Personilized Aquarium Care </h1>
-                <nav>
+                <nav style="margin-left:40px;">
                     <a href="../home/index.php">Home</a>
                     <a href="index2.php">Details</a>
                     <a href="index2.php?page=products2">Services</a>

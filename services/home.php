@@ -18,7 +18,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
     <div id="productVideo">
         <div >
-            <button style="margin-left:50px"><img
+            <button style="margin-left:50px;font-size:16px;"><img
                     src="planticon.png"
                     alt="" > For the Healthy and Greeny Environment</button>
             <h1 style="margin-left:100px ; margin-top:20px;" > Gardening </h1>
@@ -67,7 +67,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($recently_added_products as $product): ?>
         <a href="index.php?page=product&id=<?=$product['id']?>" class="product">
             <img src="../../carehub-vendor/public_html/uploads/<?=$product['img']?>" width="200" height="200" alt="<?=$product['title']?>">
-            <span class="name"><?=$product['title']?></span>
+            <span class="name" style="margin-right:50px;"><?=$product['title']?></span>
             <span class="price">
                 Rs : <?=$product['price']?>
                 <?php if ($product['rrp'] > 0): ?>

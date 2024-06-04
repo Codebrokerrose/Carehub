@@ -31,7 +31,9 @@
       
     <label class = "navbar-brand"  style="font-size: 26px; color:black; margin-left:100px;"> VENDOR | <font color="#9cf">CAREHUB</font>
     </label>
-		<span class="menu-btn"><i class="fa fa-bars"></i></span>
+		<span class="menu-btn">
+      <!-- <i class="fa fa-bars"></i> -->
+    </span>
 	
 		<ul class="ts-profile-nav">
 		<li class="ts-account">

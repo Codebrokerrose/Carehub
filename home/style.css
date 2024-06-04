@@ -325,6 +325,10 @@ html{
     letter-spacing: 2px;
 }
 
+.contain .slide-container .slide .content .btn:hover{
+    cursor: pointer;
+}
+
 @keyframes animate{
     0%{
         opacity: 0;

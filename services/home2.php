@@ -16,10 +16,10 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div id="productVideo">
         <div>
-            <button style="margin-left:50px"><img
+            <button style="margin-left:50px; font-size:14px;"><img
                     src="https://images.pond5.com/aquarium-icon-vector-isolated-contour-illustration-125891909_iconl.jpeg"
                     alt=""> For the best care of your Aquariam</button>
-            <h1 style="margin-left:100px"> Aquariam & Fish Caring </h1>
+            <h1 style="margin-left:100px;font-size:33px;"> Aquariam & Fish Caring </h1>
         </div>
         <div>
             <video autoplay loop muted plays-inline id="video">
@@ -63,7 +63,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($recently_added_products as $product): ?>
         <a href="index2.php?page=product2&id=<?=$product['id']?>" class="product">
             <img src="../../carehub-vendor/public_html/uploads/<?=$product['img']?>" width="200" height="200" alt="<?=$product['title']?>">
-            <span class="name"><?=$product['title']?></span>
+            <span class="name" style="margin-right:50px;"><?=$product['title']?></span>
             <span class="price">
                 Rs : <?=$product['price']?>
                 <?php if ($product['rrp'] > 0): ?>

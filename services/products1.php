@@ -28,7 +28,7 @@ $total_products = $pdo->query('SELECT * FROM category where `title`LIKE "%pet%"'
         <?php foreach ($products as $product): ?>
         <a href="index1.php?page=product1&id=<?=$product['id']?>" class="product">
             <img src="../../carehub-vendor/public_html/uploads/<?=$product['img']?>" width="200" height="200" alt="<?=$product['title']?>">
-            <span class="name"><?=$product['title']?></span>
+            <span class="name" style="margin-right:50px;"><?=$product['title']?></span>
             <span class="price">
                 Rs : <?=$product['price']?>
                 <?php if ($product['rrp'] > 0): ?>

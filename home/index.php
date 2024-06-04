@@ -35,9 +35,8 @@
                     <h3>garden</h3>
                     <br>
                     <h4 class="scroll-txt">Take Care of Your Hobbies in a Easy Way . 
-                    </h4>
-           <br>
-                    <a href="#" class="btn">learn_more</a>
+                    </h4> <br>
+                    <a href="../services/index.php" class="btn" >learn_more</a>
                 </div>
                 <video src="./slide/slide3.mp4" muted autoplay loop></video>
             </div></div>
@@ -46,7 +45,7 @@
                     <h3>aquariam</h3>
                     <br>
                     <h4 class="scroll-txt">Take Care of Your Hobbies in a Easy Way .</h4><br>
-                    <a href="#" class="btn">learn_more</a>
+                    <a href="../services/index1.php" class="btn">learn_more</a>
                 </div>
                 <video src="./slide/slide2.mp4" muted autoplay loop></video>
             </div></div>
@@ -54,7 +53,7 @@
                 <div class="content">
                     <h3>Pet</h3><br>
                     <h4 class="scroll-txt">Take Care of Your Hobbies in a Easy Way .</h4><br>
-                    <a href="#" class="btn">learn_more</a>
+                    <a href="../services/index2.php" class="btn">learn_more</a>
                 </div>
                 <video src="./slide/slide1.mp4" muted autoplay loop></video>
             </div></div>

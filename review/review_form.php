@@ -1,3 +1,19 @@
+<?php
+// config.php
+$servername = "localhost";
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
+$dbname = "carehub";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +85,7 @@
 <body>
     <form action="review_form.php" method="post">
         <h2>Leave a Review</h2>
-        <label for="name">Name:</label>
+        <label for="username">Name:</label>
         <input type="text" id="username" name="username" required>
         
         <label for="comment">Comment:</label>
@@ -84,25 +100,11 @@
         $user = $_POST['username'];
         $comment = $_POST['comment'];
 
-        // Database credentials
-        $servername = "localhost";
-        $username = "root"; // Replace with your database username
-        $password = ""; // Replace with your database password
-        $dbname = "carehub";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
         // Create table if not exists
         $createTableSQL = "CREATE TABLE IF NOT EXISTS reviews (
             id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(255) NOT NULL,
-            comment TEXT NOT NULL,
+            comment VARCHAR(255) UNIQUE NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";
         if (!$conn->query($createTableSQL)) {
@@ -116,13 +118,15 @@
         if ($stmt->execute()) {
             // Redirect back to review page after successful submission
             header("Location: review_page.php");
+            exit();
         } else {
             echo "Error: " . $stmt->error;
         }
 
         $stmt->close();
-        $conn->close();
     }
+
+    $conn->close();
     ?>
 </body>
 </html>
