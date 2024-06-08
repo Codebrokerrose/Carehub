@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 
 CREATE TABLE IF NOT EXISTS `PlantInfo` (
             `id` INT AUTO_INCREMENT PRIMARY KEY,
-            `plant_name` VARCHAR(255) NOT NULL,
+            `plant_name` VARCHAR(255) UNIQUE NOT NULL,
             `Soil_Type` VARCHAR(255) NOT NULL,
             `Temperature` VARCHAR(255) NOT NULL ,
 `watering_timing` VARCHAR(255) NOT NULL ,

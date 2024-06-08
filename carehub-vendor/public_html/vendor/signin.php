@@ -66,7 +66,7 @@ if (isset($_POST['signin'])) {
             height: 100vh;
             justify-content: center;
             align-items: center;
-            background: url('background.png') no-repeat center center fixed;
+            background: url('../../../carehub/carehub_service_img/vendor_img.jpeg'); no-repeat center center fixed;
             background-size: cover;
             font-size: 16px;
         }

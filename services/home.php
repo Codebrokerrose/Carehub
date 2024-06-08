@@ -53,14 +53,13 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p> care Instructions </p>
         </div>
     </div>
-
-    </div>
+    
  
 
 <!-- <div class="featured">
     <h2>Gadgets</h2>
     <p>Essential gadgets for everyday use</p>
-</div> -->
+</div> --> 
 <div class="recentlyadded content-wrapper">
     <h2>Recently Added Services</h2>
     <div class="products">

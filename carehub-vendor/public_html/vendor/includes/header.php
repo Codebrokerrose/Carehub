@@ -23,6 +23,7 @@
     padding-top:5px;
     padding-bottom:40px;
 }
+
 </style>
 <div class="brand clearfix">
  <div class = "navbar navbar-default navbar-fixed-top" style="background-color:#eee;">	
@@ -37,10 +38,11 @@
 	
 		<ul class="ts-profile-nav">
 		<li class="ts-account">
-           <a href="#"><center><span class = "glyphicon glyphicon-cog"></span></center>
+      
+    <a href = "logout.php">&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Logout</a>
 
-            <i class="fa fa-angle-down hidden-side"></i>
-        </a>
+            <!-- <i class="fa fa-angle-down hidden-side"></i> -->
+
 				<!-- <ul>
 					<li><a href = "changepass.php">Change Password</a></li>
 

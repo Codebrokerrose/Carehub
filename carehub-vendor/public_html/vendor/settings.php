@@ -28,7 +28,7 @@
   <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <h3 class="page-title">Manage Admin</h3>
+            <h3 class="page-title">Manage Your details</h3>
             <div class="row">
               <div class="col-md-12">
                 <div class="panel panel-default">

@@ -72,7 +72,8 @@ header .container {
 }
 
 </style>
-<body style="background-image:url('background.png'); background-repeat:no-repeat; background-size:cover;">
+<!-- <body style="background-image:url('background.png'); background-repeat:no-repeat; background-size:cover;"> -->
+<body style="background-image:url('../../../carehub/carehub_service_img/vendor_img.jpeg'); background-repeat:no-repeat; background-size:cover;">
 	<header style="background: gray; color:white;">
     	<div class="container">
 		<div class="logo">

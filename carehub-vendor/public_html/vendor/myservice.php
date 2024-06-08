@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
                                         <button data-dismiss="modal" class="close">&times;</button>
                                         <h4>Add Service</h4>
                                         <form method="post" enctype="multipart/form-data">
-                                            <input type="text" name="name" class="name form-control" placeholder="Name of product" required/>
+                                            <input type="text" name="name" class="name form-control" placeholder="Name of services" required/>
                                             <div id="preview"></div>
                                             <input type="file" name="file" class="file-control file"  id="upload_file" onchange="getImagePreview(event)" required>
                                             
@@ -252,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_name'])) {
                                         <h4>Edit Service</h4>
                                         <form method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="existing_image" id="existing_image">
-                                            <input type="text" name="edit_name" id="edit_name" class="name form-control" placeholder="Name of product" required/>
+                                            <input type="text" name="edit_name" id="edit_name" class="name form-control" placeholder="Name of services" required/>
                                             <input type="file" name="edit_file" class="file">
                                             <input type="text" name="edit_price" id="edit_price" class="price form-control" placeholder="Enter price of service" required/>
                                             <input type="text" name="edit_contact" id="edit_contact" class="contact form-control" placeholder="Enter contact information" required/>

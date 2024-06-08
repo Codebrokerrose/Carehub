@@ -306,7 +306,7 @@ h2 {
                             </a>
                         </td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>
-                            <a href="index.php?page=product&id=<?=$product['id']?>" style="font-weight:bold; text-transform:uppercase; position:absolute; padding-right:50px; "><?=$product['title']?></a>
+                            <a href="index.php?page=product&id=<?=$product['id']?>" style="font-weight:bold; text-transform:uppercase; position:absolute; padding-right:50px; "><?=$product['title']?></a><br>
                             <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
                         </td>
                     </tr>
